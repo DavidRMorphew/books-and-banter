@@ -1,2 +1,8 @@
 <h1>Sign Up to Join Our Library!</h1>
-<p>user signup</p>
+<ul>
+<%= form_for @user, url: "/signup" do |f| %>
+    <li><%= f.label :username %>:</li>
+    <%= f.text_field :username %><br>
+    <%= f.submit %>
+<% end %>
+</ul>
