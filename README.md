@@ -2,7 +2,7 @@
 
 1) MODELS AND MIGRATIONS   
 
-Associations:
+## Associations:
 User
 * has_many :checkouts, foreign_key: :borrower_id
 * has_many :borrowed_books, through: :checkouts, source: :borrowed_book
@@ -43,7 +43,6 @@ Checkout Attributes
 * borrowed_book_id
 * checkout_date
 * due_date
-* currently_checked_out:boolean
 
 Review Attributes
 * reviewer_id
@@ -53,3 +52,9 @@ Review Attributes
 * content:text
 * recommend:boolean
 * kid_friendly:boolean
+
+2) Begin with User Model
+- generate model and migration
+- generate users_controller with new and show views 
+- create actions in users_controller for new and crate with routes get and post '/signup' in routes.rb
+- create show action in users_controller
