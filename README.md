@@ -1,24 +1,23 @@
-# README
+# PROJECT PLANNING
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+1) MODELS AND MIGRATIONS   
 
-Things you may want to cover:
+User
+has_many :checkouts, foreign_key: :borrower_id
+has_many :borrowed_books, through: :checkouts, source: :borrowed_book
+has_many :reviews, foreign_key: :reviewer_id
+has_many :reviewed_books, through: :reviews, source: :reviewed_book
 
-* Ruby version
+Checkout
+belongs_to :borrower, class_name: "User"
+belongs_to :borrowed_book, class_name: "Book"
 
-* System dependencies
+Review
+belongs_to :reviewer, class_name: "User"
+belongs_to :reviewed_book, class_name: "Book"
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Book
+has_many :checkouts, foreign_key: :borrowed_book_id
+has_many :borrowers, through: :checkouts, source: :borrower
+has_many :reviews, foreign_key: :reviewed_book_id
+has_many :reviewers, through: :reviews, source: :reviewer
