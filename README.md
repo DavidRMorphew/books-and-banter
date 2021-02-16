@@ -56,5 +56,10 @@ Review Attributes
 2) Begin with User Model
 - generate model and migration
 - generate users_controller with new and show views 
-- create actions in users_controller for new and crate with routes get and post '/signup' in routes.rb
+- create actions in users_controller for new and create with routes get and post '/signup' in routes.rb
 - create show action in users_controller
+
+3) Logging In and Out
+- generate sessions_controller
+- create actions in sessions_controller for new and create with routes get and post '/login' 
+- create action in sessions_controller for delete with route '/logout'

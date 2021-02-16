@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   end
   
   def show
+    # Only allow access if current user is the one attempting to access page
     @user = User.find_by(id: params[:id])
   end
 
