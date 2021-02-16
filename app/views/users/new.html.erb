@@ -2,7 +2,11 @@
 <ul>
 <%= form_for @user, url: "/signup" do |f| %>
     <li><%= f.label :username %>:</li>
-    <%= f.text_field :username %><br>
+        <%= f.text_field :username %><br>
+    <li><%= f.label :email %><li>
+        <%= f.email_field :email %><br>
+    <li><%= f.label :password%>:</li>
+        <%= f.password_field :password%><br>
     <%= f.submit %>
 <% end %>
 </ul>
