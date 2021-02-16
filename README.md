@@ -27,7 +27,7 @@ User Attributes:
 * username
 * email
 * password (using has_secure_password Macro)
-* admin:boolean, defaul: false
+* admin:boolean, default: false
 
 Book Attributes:
 * author(s)
