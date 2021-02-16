@@ -1,4 +1,15 @@
 <h1>Sign Up to Join Our Library!</h1>
+
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %>.</li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <ul>
 <%= form_for @user, url: "/signup" do |f| %>
     <li><%= f.label :username %></li>
