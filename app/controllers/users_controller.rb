@@ -6,6 +6,11 @@ class UsersController < ApplicationController
   def create
     user = User.new(user_params)
     binding.pry
+    if user.save
+      redirect_to user_path(user.id)
+    else
+      render :new
+    end
   end
   
   def show
