@@ -10,14 +10,12 @@
   </div>
 <% end %>
 
-<ul>
-<%= form_for @user, url: "/signup" do |f| %>
-    <li><%= f.label :username %></li>
-        <%= f.text_field :username %><br>
-    <li><%= f.label :email %><li>
-        <%= f.email_field :email %><br>
-    <li><%= f.label :password%>:</li>
-        <%= f.password_field :password%><br>
+<%= form_for(@user, url: "/signup") do |f| %>
+    <%= f.label :username %><br>
+    <%= f.text_field :username %><br><br>
+    <%= f.label :email %><br>
+    <%= f.email_field :email %><br><br>
+    <%= f.label :password%>:<br>
+    <%= f.password_field :password%><br><br>
     <%= f.submit %>
 <% end %>
-</ul>
