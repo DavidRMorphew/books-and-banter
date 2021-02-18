@@ -1,2 +1,12 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<h1><%= @book.title %></h1>
+<h3>Author(s):</h3>
+    <%= @book.authors %>
+<h3>Description:</h3>
+    <%= @book.description %>
+<h3>Publisher:</h3>
+    <%= @book.publisher %>
+<h3>Publication Date:</h3>
+    <%= @book.publication_date %>
+<h3>Categories:</h3>
+    <%= @book.categories %><br><br>
+<%= link_to "Back to All Available Books", books_path %>
