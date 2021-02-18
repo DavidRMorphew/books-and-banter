@@ -44,8 +44,12 @@ class BooksController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     # admin only, only when book is not currently checked out
+    @book = Book.find_by(id: params[:id])
+    # !@book.currently_checked_out?
+    @book.destroy
+    redirect_to books_path
   end
 
   # add class method of highest_rated
