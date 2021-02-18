@@ -12,5 +12,11 @@ module ApplicationHelper
     def admin_authorization?
         !!current_user.admin
     end
+
+    def redirect_if_not_logged_in
+        if !logged_in?
+            redirect_to login_path
+        end
+    end
     # Add authorized? for users new, create, update, and show actions
 end
