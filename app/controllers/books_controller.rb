@@ -5,11 +5,15 @@ class BooksController < ApplicationController
 
   def new
     # only for admin and link visible in admin layout
-    if admin_authorization?
-      @book = Book.new
-    else
-      redirect_to books_path
+    if !admin_authorization?
+      flash[:message] = "You do not have authorization for that action. If you have an admin account, please log in as an admin."
+      redirect_to login_path
     end
+      @book = Book.new
+  end
+
+  def create
+
   end
 
   def index
