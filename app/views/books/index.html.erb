@@ -4,6 +4,6 @@
 <% @books.each do |book| %>
     <div><h2><%= link_to book.title, book_path(book.id) %></h2>
         Author(s): <%= book.authors %><br>
-        Description: <%= book.description %></div>
+        Description: <%= display_description %></div>
 <% end %>  
 </ul>
