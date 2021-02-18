@@ -63,3 +63,20 @@ Review Attributes
 - generate sessions_controller
 - create actions in sessions_controller for new and create with routes get and post '/login' 
 - create action in sessions_controller for delete with route '/logout'
+
+4.) Add Helper Methods and include in ApplicationController
+- logged_in?
+- current_user
+
+5.) Build Models and Migrations
+- Books
+- Checkouts
+- Reviews
+
+
+
+NB
+- add admin_authorization_check
+- add authorized? check for user
+
+

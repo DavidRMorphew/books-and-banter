@@ -8,4 +8,6 @@ module ApplicationHelper
         !!current_user
     end
 
+    # Add admin_authorization? check for certain features such as users index, delete
+    # Add authorized? for users new, create, update, and show actions
 end
