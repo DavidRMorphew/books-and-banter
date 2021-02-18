@@ -1,6 +1,12 @@
 <h1>Our Library</h1>
 <h4>Click on any title to see more information, check out the book, or write a review.</h4>
+
+
 <ul>
+    <% if admin_authorization? %>
+        <div><h2><%= link_to "Add a New Book", new_book_path %></h2></div>
+    <% end %>
+    
 <% @books.each do |book| %>
     <div><h2><%= link_to book.title, book_path(book.id) %></h2>
         Author(s): <%= book.display_authors %><br>

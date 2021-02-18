@@ -12,5 +12,5 @@
 <%= link_to "Back to All Available Books", books_path %><br>
 <% if admin_authorization? %>
     <%= link_to "Edit this Book", edit_book_path(@book.id) %><br>
-    <%= link_to "Remove this Book from the Library", "/books/#{@book.id}", method: "delete" %>
+    <%= link_to "Remove this Book from the Library", book_path(@book.id), method: "delete" %>
 <% end %>
