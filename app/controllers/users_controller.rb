@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  # add before_action for delete for admin_authorization?
+  # add redirect_if_not_logged_in to show and check current_user
   def new
     @user = User.new
   end
