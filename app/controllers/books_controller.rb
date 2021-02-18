@@ -4,7 +4,7 @@ class BooksController < ApplicationController
   before_action :redirect_if_not_logged_in
 
   def new
-    # only for admin and visible in admin layout
+    # only for admin and link visible in admin layout
     if admin_authorization?
       @book = Book.new
     else
