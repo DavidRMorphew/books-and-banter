@@ -24,7 +24,7 @@ class BooksController < ApplicationController
   end
 
   def show
-    # access only if not_checked_out and logged_in?
+    # access only if not_checked_out || current_users borrowed book
     @book = Book.find_by(id: params[:id])
   end
 
@@ -36,6 +36,12 @@ class BooksController < ApplicationController
 
   def update
     # only for admin
+    @book = Book.find_by(id: params[:id])
+    if @book.update(book_params)
+      redirect_to book_path(@book.id)
+    else
+      render :edit
+    end
   end
 
   def delete
