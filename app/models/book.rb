@@ -1,6 +1,7 @@
 class Book < ApplicationRecord
     validates :authors, :title, :description, :publisher, :publication_date, :categories, presence: true
     validates :title, uniqueness: { scope: :authors, message: "with the same author is already in our libray" }
+    validate :publication_date_year_valid
 
     def display_description
         !self.description.match(/[.]\z/) ? self.description << "." : self.description
@@ -16,6 +17,14 @@ class Book < ApplicationRecord
         when 3..100
             authors_array[-1] = "and " + authors_array[-1]
             authors_array.join(", ")
+        end
+    end
+
+    def publication_date_year_valid
+        if !self.publication_date.to_i || self.publication_date.length != 4
+            self.errors.add(:publication_date, "must be formatted as a four-digit number")
+        elsif self.publication_date.to_i > Time.now.year
+            self.errors.add(:publication_date, "cannot be in the future")
         end
     end
 end
