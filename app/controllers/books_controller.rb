@@ -2,7 +2,8 @@ class BooksController < ApplicationController
   # Add before_action to find book in create, show, edit, delete
   
   def new
-    # only for admin
+    # only for admin and visible in admin layout
+    @book = Book.new
   end
 
   def index

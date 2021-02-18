@@ -5,6 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+User.create([
+    {username:"LibraryAdmin", email:"bookmaster@library.com", password:"admin", admin: true}, 
+    {username:"PhantomReader", email:"BillyZane@phantom.com", password:"pw"},
+    {username: "Agamemnon-Lord-of-Books", email: "bookking@hey.com", password: "pw"}
+    ])
+
+
 Book.create({
     authors: "George Herbert",
     isbn: "ISBN 10: 0441013597, ISBN 13: 9780441013593", 
