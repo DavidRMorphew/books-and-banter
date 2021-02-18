@@ -1,6 +1,9 @@
 class SessionsController < ApplicationController
   def new
-    # check for logged_in? and redirect if logged in - perhaps redirect_if_logged_in before_action
+    # perhaps redirect_if_logged_in before_action
+    if logged_in?
+      redirect_to user_path(current_user)
+    end
   end
   
   def create
