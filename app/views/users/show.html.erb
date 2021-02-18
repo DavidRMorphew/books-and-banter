@@ -1,6 +1,8 @@
 <h1><%= @user.username %></h1>
-<h2>Books</h2>
-<h2>Reviews<h2>
+<% if !admin_authorization? %>
+    <h2>Checked-Out Books</h2>
+    <h2>My Book Reviews<h2>
+<% end %>
 
 <%# Remember to move this to navbar %>
 <%= link_to "Log Out", '/logout', method: "delete" %>
