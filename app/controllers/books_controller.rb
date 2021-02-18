@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  # Add before_action to find show
+  # Add before_action to find book in create, show, edit, delete
   
   def new
     # only for admin
@@ -18,4 +18,8 @@ class BooksController < ApplicationController
   def edit
     # only for admin
   end
+
+  # add class method of highest_rated
+
+  # add query method for searching through library - author, rating, categories, title (name_like)
 end
