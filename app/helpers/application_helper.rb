@@ -19,4 +19,10 @@ module ApplicationHelper
         end
     end
     # Add authorized? for users new, create, update, and show actions
+    def redirect_if_not_admin_authorized
+        if !admin_authorization?
+            flash[:message] = "You do not have authorization for that action. If you have an admin account, please log in as an admin."
+            redirect_to login_path
+        end
+    end
 end

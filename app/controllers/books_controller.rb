@@ -2,13 +2,11 @@ class BooksController < ApplicationController
   # Add before_action to find book in create, show, edit, delete
   # Add before_action to check for admin for new, edit, delete
   before_action :redirect_if_not_logged_in
+  before_action :redirect_if_not_admin_authorized, only: [:new, :create, :edit, :update, :destroy]
 
   def new
     # only for admin and link visible in admin layout
-    if !admin_authorization?
-      flash[:message] = "You do not have authorization for that action. If you have an admin account, please log in as an admin."
-      redirect_to login_path
-    end
+    
       @book = Book.new
   end
 
