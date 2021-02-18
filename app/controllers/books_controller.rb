@@ -30,6 +30,16 @@ class BooksController < ApplicationController
 
   def edit
     # only for admin
+    @book = Book.find_by(id: params[:id])
+    # link from books#show for admin only
+  end
+
+  def update
+    # only for admin
+  end
+
+  def delete
+    # admin only, only when book is not currently checked out
   end
 
   # add class method of highest_rated
