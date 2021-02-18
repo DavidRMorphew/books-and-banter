@@ -10,10 +10,9 @@ class BooksController < ApplicationController
   end
 
   def create
-    binding.pry
-    book = Book.new(book_params)
-    if book.save
-      redirect_to book_path(book.id)
+    @book = Book.new(book_params)
+    if @book.save
+      redirect_to book_path(@book.id)
     else
       render :new
     end
@@ -42,5 +41,5 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:authors, :isbn, :title, :description, :publisher, :publication_date, :categories)
   end
-  
+
 end
