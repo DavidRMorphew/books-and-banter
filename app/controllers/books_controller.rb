@@ -6,12 +6,17 @@ class BooksController < ApplicationController
 
   def new
     # only for admin and link visible in admin layout
-    
       @book = Book.new
   end
 
   def create
-
+    binding.pry
+    book = Book.new(book_params)
+    if book.save
+      redirect_to book_path(book.id)
+    else
+      render :new
+    end
   end
 
   def index
@@ -31,4 +36,11 @@ class BooksController < ApplicationController
   # add class method of highest_rated
 
   # add query method for searching through library - author, rating, categories, title (name_like)
+
+  private
+
+  def book_params
+    params.require(:book).permit(:authors, :isbn, :title, :description, :publisher, :publication_date, :categories)
+  end
+  
 end
