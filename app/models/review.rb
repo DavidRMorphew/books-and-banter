@@ -18,11 +18,14 @@ class Review < ApplicationRecord
             "for peet's sake"
         ]
         submitted_text = self.title.downcase + " " + self.content.downcase
+        
         if inappropriate_language.any? { |phrase| submitted_text.scan(/(phrase)/) }
             self.errors.add(:appropriate_language, "is required for reviews")
         end
     end
+
     private
+    
     def review_params
         params.require(:review).permit(:title, :content, :rating, :recommend, :kid_friendly)
     end

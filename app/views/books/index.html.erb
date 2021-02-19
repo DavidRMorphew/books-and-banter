@@ -3,7 +3,7 @@
 
 
 <ul>
-    <% if admin_authorization? %>
+    <% if admin? %>
         <div><h2><%= link_to "Add a New Book", new_book_path %></h2></div>
     <% end %>
     

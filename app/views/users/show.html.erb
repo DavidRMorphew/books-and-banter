@@ -1,5 +1,5 @@
 <h1><%= @user.username %></h1>
-<% if !admin_authorization? %>
+<% if !admin? %>
     <h2>Checked-Out Books</h2>
     <h2>My Book Reviews<h2>
 <% end %>

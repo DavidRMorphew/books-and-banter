@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
   # Add before_action to find book in create, show, edit, delete
   before_action :redirect_if_not_logged_in
-  before_action :redirect_if_not_admin_authorized, only: [:new, :create, :edit, :update, :destroy]
+  before_action :redirect_if_not_admin, only: [:new, :create, :edit, :update, :destroy]
 
   def new
     # only for admin and link visible in admin layout

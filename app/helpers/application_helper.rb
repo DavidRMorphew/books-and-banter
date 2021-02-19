@@ -9,7 +9,7 @@ module ApplicationHelper
     end
 
     # Add admin_authorization? check for certain features such as users index, delete
-    def admin_authorization?
+    def admin?
         !!current_user.admin
     end
 
@@ -19,8 +19,8 @@ module ApplicationHelper
         end
     end
     # Add authorized? for users new, create, update, and show actions
-    def redirect_if_not_admin_authorized
-        if !admin_authorization?
+    def redirect_if_not_admin
+        if !admin?
             flash[:message] = "You do not have authorization for that action. If you have an admin account, please log in as an admin."
             redirect_to login_path
         end
