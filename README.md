@@ -70,7 +70,9 @@ Review Attributes
 
 5.) Build Models and Migrations
 - Books
+    - build controller and views
 - Checkouts
+    - build controller and views
 - Reviews
 
 
