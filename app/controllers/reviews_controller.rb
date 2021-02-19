@@ -30,7 +30,7 @@ class ReviewsController < ApplicationController
   def edit
     @review = Review.find_by(id: params[:id])
 
-    authorized_to_edit_review?(@review)
+    redirect_if_not_authorized_to_edit_review(@review)
 
     @book = @review.reviewed_book
   end
@@ -39,7 +39,7 @@ class ReviewsController < ApplicationController
     # binding.pry
     @review = Review.find_by(id: params[:id])
 
-    authorized_to_edit_review?(@review)
+    redirect_if_not_authorized_to_edit_review(@review)
     # Seems to be hackable upon multiple attempts - why?
     if @review.update(review_params)
       redirect_to review_path(@review.id)
@@ -51,7 +51,7 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review = Review.find_by(id: params[:id])
-    redirect_if_not_authorized_to_destroy_review(review)
+    redirect_if_not_authorized_to_destroy_review(@review)
     @review.destroy
     redirect_to books_path
   end

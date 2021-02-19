@@ -25,4 +25,15 @@ module ApplicationHelper
             redirect_to login_path
         end
     end
+
+    def authorized_to_view?(user)
+        admin? || user == current_user
+    end
+
+    def redirect_if_not_authorized_to_view(user)
+        if !authorized_to_view?(user)
+            flash[:message] = "You are not authorized to view that page"
+            redirect_to user_path(current_user)
+        end
+    end
 end

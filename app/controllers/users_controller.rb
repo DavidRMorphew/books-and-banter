@@ -17,7 +17,9 @@ class UsersController < ApplicationController
   
   def show
     # Only allow access if current user is the one attempting to access page
+    
     @user = User.find_by(id: params[:id])
+    redirect_if_not_authorized_to_view(@user)
   end
 
   private
