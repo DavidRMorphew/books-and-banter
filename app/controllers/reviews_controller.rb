@@ -26,6 +26,11 @@ class ReviewsController < ApplicationController
 
   def index
     binding.pry
+    if params[:book_id] && @book = Book.find_by(id: params[:book_id])
+      @reviews = @book.reviews
+    else
+      @reviews = Review.all
+    end
   end
 
   def show
