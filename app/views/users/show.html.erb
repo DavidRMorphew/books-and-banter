@@ -1,5 +1,7 @@
 <h1><%= @user.username %></h1>
-<% if !admin? %>
+<% if admin? %>
+    <%= link_to "All Reviews", "/admin/reviews" %><br>
+<% else %>
     <h2>Checked-Out Books</h2>
     <h2>My Book Reviews<h2>
 <% end %>

@@ -12,7 +12,7 @@
 
 <% if admin? %>
     <%= link_to "Edit this Book", edit_book_path(@book.id) %><br>
-    <%= link_to "Remove this Book from the Library", book_path(@book.id), method: "delete" %>
+    <%= link_to "Remove this Book from the Library", book_path(@book.id), method: "delete" %><br>
 <% else  %>
     <%= link_to "Review this Book", new_book_review_path(@book.id) unless user_reviewed_book_already?(@book) %><br>
 <% end %>
