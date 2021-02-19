@@ -52,6 +52,11 @@ class BooksController < ApplicationController
     redirect_to books_path
   end
 
+  def top_rated
+    @books = Book.top_rated.limit(params[:number])
+    render :index
+  end
+
   # add class method of highest_rated with action here and route: books/highest_rated - need method in Book to define it with scope
 
   # add query method for searching through library - author, rating, categories, title (name_like)

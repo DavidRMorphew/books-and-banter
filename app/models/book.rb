@@ -32,7 +32,7 @@ class Book < ApplicationRecord
         end
     end
 
-    def self.top_rated(number)
-        self.order(rating: :desc).limit(number)
+    def self.top_rated
+        self.order(rating: :desc)
     end
 end
