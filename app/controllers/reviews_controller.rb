@@ -1,5 +1,8 @@
 class ReviewsController < ApplicationController
+  include ReviewsHelper
+
   before_action :redirect_if_not_logged_in
+  
   def new
     # binding.pry
     @book = Book.find_by(id: params[:book_id])
@@ -26,20 +29,23 @@ class ReviewsController < ApplicationController
 
   def edit
     @review = Review.find_by(id: params[:id])
+
+    authorized_to_edit_review?(@review)
+
     @book = @review.reviewed_book
   end
 
   def update
     @review = Review.find_by(id: params[:id])
-      if @review.reviewer != current_user 
-        flash[:message] = "You are not authorized to edit that review"
-        redirect_to user_path(current_user)
-      elsif @review.update(review_params)
+
+    authorized_to_edit_review?(@review)
+      
+    if @review.update(review_params)
         redirect_to review_path(@review.id)
-      else
-        @book = @review.reviewed_book
-        render :edit
-      end
+    else
+      @book = @review.reviewed_book
+      render :edit
+    end
   end
 
 
