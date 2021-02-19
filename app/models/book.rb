@@ -1,6 +1,8 @@
 class Book < ApplicationRecord
     has_many :checkouts, foreign_key: :borrowed_book_id
     has_many :borrowers, through: :checkouts, source: :borrower
+    has_many :reviews, foreign_key: :reviewed_book_id
+    has_many :reviewers, through: :reviews, source: :reviewer
     validates :authors, :title, :description, :publisher, :publication_date, :categories, :isbn, presence: true
     validates :title, uniqueness: { scope: :authors, message: "with the same author is already in our libray" }
     validate :publication_date_year_valid
