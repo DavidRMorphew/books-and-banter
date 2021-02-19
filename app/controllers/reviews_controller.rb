@@ -36,6 +36,7 @@ class ReviewsController < ApplicationController
   end
 
   def update
+    # binding.pry
     @review = Review.find_by(id: params[:id])
 
     authorized_to_edit_review?(@review)
@@ -48,7 +49,12 @@ class ReviewsController < ApplicationController
     end
   end
 
-
+  def destroy
+    @review = Review.find_by(id: params[:id])
+    authorized_to_destroy?
+    @review.destroy
+    redirect_to books_path
+  end
 
   private
     
