@@ -9,8 +9,12 @@
     <%= @book.publication_date %>
 <h3>Categories:</h3>
     <%= @book.categories %><br><br>
-<%= link_to "Back to All Available Books", books_path %><br>
+
 <% if admin? %>
     <%= link_to "Edit this Book", edit_book_path(@book.id) %><br>
     <%= link_to "Remove this Book from the Library", book_path(@book.id), method: "delete" %>
+<% else %>
+    <%= link_to "Review this Book", new_book_review_path(@book.id) %><br>
 <% end %>
+
+<%= link_to "Back to All Available Books", books_path %><br>
