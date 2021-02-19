@@ -2,6 +2,7 @@ class Review < ApplicationRecord
     belongs_to :reviewer, class_name: "User"
     belongs_to :reviewed_book, class_name: "Book"
     validates :title, :content, :rating, presence: true
+    validates :rating, numericality: { greater_than_or_equal_to: 1.0, less_than_or_equal_to: 10.0}
     validate :appropriate_language
     # Add validation for rating
 
@@ -19,8 +20,8 @@ class Review < ApplicationRecord
             "for peet's sake"
         ]
         submitted_text = self.title.downcase + " " + self.content.downcase
-        
-        if inappropriate_language.any? { |phrase| submitted_text.scan(/(phrase)/) }
+
+        if inappropriate_language.any? { |phrase|  submitted_text.scan(/(#{phrase})/) }
             self.errors.add(:appropriate_language, "is required for reviews")
         end
     end
