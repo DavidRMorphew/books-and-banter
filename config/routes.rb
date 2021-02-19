@@ -12,5 +12,12 @@ Rails.application.routes.draw do
   resources :books do
     resources :reviews, only: [:index, :new, :create]
   end
+  
+  scope '/admin' do
+    resources :reviews, only: [:index]
+  end
+
   resources :reviews, only: [:show, :edit, :update, :destroy]
+
+
 end

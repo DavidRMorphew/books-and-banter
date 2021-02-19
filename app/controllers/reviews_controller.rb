@@ -25,6 +25,7 @@ class ReviewsController < ApplicationController
   end
 
   def index
+    binding.pry
   end
 
   def show
