@@ -6,6 +6,11 @@ class ReviewsController < ApplicationController
   def new
     # binding.pry
     @book = Book.find_by(id: params[:book_id])
+    if user_reviewed_book_already?(@book)
+      flash[:message] = "You have already reviewed this book."
+      redirect_to book_path(@book.id)
+    end
+    
     @review = @book.reviews.build
   end
 
@@ -29,7 +34,7 @@ class ReviewsController < ApplicationController
 
   def edit
     @review = Review.find_by(id: params[:id])
-    
+
     if !authorized_to_edit_review?(@review)
       flash[:message] = "You are not authorized to edit that review."
       redirect_to user_path(current_user)

@@ -18,4 +18,9 @@ module ReviewsHelper
     def authorized_to_destroy_review?(review)
         admin? || review.reviewer == current_user
     end
+
+    def user_reviewed_book_already?(book)
+        binding.pry
+        current_user.reviewed_books.where(reviewed_book: book)
+    end
 end
