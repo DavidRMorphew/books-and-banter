@@ -1,7 +1,7 @@
 <h1><%= current_user.username + "\'s Review of " + @book.title %></h1>
-<h4><%= @review.title %><h4>
+<h4><%= @review.title %></h4>
 <p><%= @review.content %></p>
-<p><%= @review.rating %></p>
+<p>Rating <%= @review.rating %> / 10.0</p>
 <p>Recommended? <%= display_boolean_yes_no(@review.recommend) %></p>
 <p>Kid Friendly? <%= display_boolean_yes_no(@review.kid_friendly) %></p>
 
