@@ -3,6 +3,7 @@ class Review < ApplicationRecord
     belongs_to :reviewed_book, class_name: "Book"
     validates :title, :content, :rating, presence: true
     validate :appropriate_language
+    # Add validation for rating
 
     def appropriate_language
         inappropriate_language = [
