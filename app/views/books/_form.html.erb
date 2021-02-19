@@ -15,16 +15,16 @@
     <li>Author(s):<br>
         <%= f.text_field :authors %>
         </li>
-    <li><%= f.label :description %>:<br>
+    <li><%= f.label :description %><br>
         <%= f.text_area :description %></li>
-    <li><%= f.label :publisher %>:<br>
+    <li><%= f.label :publisher %><br>
         <%= f.text_field :publisher %></li>
-    <li><%= f.label :publication_date %>:<br>
+    <li><%= f.label :publication_date %><br>
         <%= f.text_field :publication_date %></li>
-    <li><%= f.label :categories %>:<br>
+    <li><%= f.label :categories %><br>
         <%= f.text_field :categories %></li>
     </li>
-    <li>ISBN: (ex. ISBN 10: ..., ISBN 13: ...)<br>
+    <li>ISBN (number only)<br>
         <%= f.text_field :isbn %></li>
 
     <%= f.submit%>

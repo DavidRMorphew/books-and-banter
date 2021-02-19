@@ -6,6 +6,7 @@ class BooksController < ApplicationController
   def new
     # only for admin and link visible in admin layout
       @book = Book.new
+      # order by created_at by default
   end
 
   def create
@@ -51,7 +52,7 @@ class BooksController < ApplicationController
     redirect_to books_path
   end
 
-  # add class method of highest_rated
+  # add class method of highest_rated with action here and route: books/highest_rated - need method in Book to define it with scope
 
   # add query method for searching through library - author, rating, categories, title (name_like)
 
