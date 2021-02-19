@@ -17,4 +17,6 @@
     <%= link_to "Review this Book", new_book_review_path(@book.id) unless user_reviewed_book_already?(@book) %><br>
 <% end %>
 
+<%= link_to "See Reviews", book_reviews_path(@book.id) %><br>
+
 <%= link_to "Back to All Available Books", books_path %><br>
