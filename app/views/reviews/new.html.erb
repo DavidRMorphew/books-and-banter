@@ -1,5 +1,5 @@
-<%# Make a method for the title %>
-<h1><%= current_user.username + "\'s Review of " + @book.title %></h1>
+<%= review_title %>
+
 <% if @review.errors.any? %>
   <div id="error_explanation">
     <ul>
