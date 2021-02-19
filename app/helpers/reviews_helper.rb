@@ -19,6 +19,18 @@ module ReviewsHelper
         end
     end
 
+    def recommend_display(review)
+        if review.recommend
+            "Recommended? " + display_boolean_yes_no(review.recommend)
+        end
+    end
+    
+    def kid_friendly_display(review)
+        if review.kid_friendly
+            "Kid Friendly? " + display_boolean_yes_no(review.kid_friendly)
+        end
+    end
+
     def authorized_to_edit_review?(review)
         review.reviewer == current_user
     end

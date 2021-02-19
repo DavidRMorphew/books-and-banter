@@ -1,2 +1,14 @@
 <h1><%= reviews_title %></h1>
+<% @reviews.each do |review| %>
+    <div>
+        <%# create method to show username %>
+        <h3><%= review.reviewer.username %>'s Review</h3>
+        <strong><%= link_to review.title, review_path(review.id) %></strong><br>
+        <%= review.content %><br>
+        Rating <%= review.rating %>/ 10<br>
+        <%= recommend_display(review) %><br>
+        <%= kid_friendly_display(review) %>
+    </div><br>
+<% end %>
 
+<%= link_to "Back to Book", book_path(@book.id) %>
