@@ -2,8 +2,8 @@
 <h4><%= @review.title %></h4>
 <p><%= @review.content %></p>
 <p>Rating <%= @review.rating %> / 10.0</p>
-<p>Recommended? <%= display_boolean_yes_no(@review.recommend) %></p>
-<p>Kid Friendly? <%= display_boolean_yes_no(@review.kid_friendly) %></p>
+<p><%= recommend_display(@review) %></p>
+<p><%= kid_friendly_display(@review) %></p>
 
 <%= link_to "Edit this Review", edit_review_path(@review.id) if authorized_to_edit_review?(@review) %><br>
 <%# Link to All Reviews of this book %>
@@ -12,3 +12,5 @@
 <%= form_tag("/reviews/#{@review.id}", method: "delete") do %>
     <%= submit_tag "Delete this Review" %>
 <% end if authorized_to_destroy_review?(@review) %>
+
+<%= link_to "See All Reviews of This Book", book_reviews_path(@book.id) %>

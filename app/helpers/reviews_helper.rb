@@ -1,6 +1,6 @@
 module ReviewsHelper
     def display_boolean_yes_no(boolean)
-        true ? "Yes" : "No"
+        boolean ? "Yes" : "No"
     end
 
     def review_title
@@ -20,15 +20,11 @@ module ReviewsHelper
     end
 
     def recommend_display(review)
-        if review.recommend
-            "Recommended? " + display_boolean_yes_no(review.recommend)
-        end
+        "Recommended? " + display_boolean_yes_no(review.recommend)
     end
     
     def kid_friendly_display(review)
-        if review.kid_friendly
-            "Kid Friendly? " + display_boolean_yes_no(review.kid_friendly)
-        end
+        "Kid Friendly? " + display_boolean_yes_no(review.kid_friendly)
     end
 
     def authorized_to_edit_review?(review)
