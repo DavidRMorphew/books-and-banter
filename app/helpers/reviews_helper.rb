@@ -15,21 +15,7 @@ module ReviewsHelper
         review.reviewer == current_user
     end
     
-    def redirect_if_not_authorized_to_edit_review(review)
-        if !authorized_to_edit_review?(review)
-            flash[:message] = "You are not authorized to edit that review"
-            redirect_to user_path(current_user)
-        end
-    end
-
     def authorized_to_destroy_review?(review)
         admin? || review.reviewer == current_user
-    end
-
-    def redirect_if_not_authorized_to_destroy_review(review)
-        if !authorized_to_destroy_review?(review)
-            flash[:message] = "You are not authorized to remove that review"
-            redirect_to user_path(current_user)
-        end
     end
 end

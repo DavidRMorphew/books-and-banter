@@ -29,18 +29,17 @@ class ReviewsController < ApplicationController
 
   def edit
     @review = Review.find_by(id: params[:id])
-
-    redirect_if_not_authorized_to_edit_review(@review)
-
+    
+    if !authorized_to_edit_review?(@review)
+      flash[:message] = "You are not authorized to edit that review."
+      redirect_to user_path(current_user)
+    end
     @book = @review.reviewed_book
   end
 
   def update
-    # binding.pry
     @review = Review.find_by(id: params[:id])
 
-    redirect_if_not_authorized_to_edit_review(@review)
-    # Seems to be hackable upon multiple attempts - why?
     if @review.update(review_params)
       redirect_to review_path(@review.id)
     else
@@ -51,9 +50,13 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review = Review.find_by(id: params[:id])
-    redirect_if_not_authorized_to_destroy_review(@review)
-    @review.destroy
-    redirect_to books_path
+    if authorized_to_destroy_review?(@review)
+      @review.destroy
+      redirect_to books_path
+    else
+      flash[:message] = "You are not authorized to remove that review."
+      redirect_to user_path(current_user)
+    end
   end
 
   private
