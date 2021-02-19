@@ -7,7 +7,13 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    binding.pry
+    @review = current_user.reviews.build(review_params)
+    if @review.save
+      redirect_to review_path(@review.id)
+    else
+      @book = Book.find_by(id: params[:book_id])
+      render :new
+    end
   end
 
   def index
