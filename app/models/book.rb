@@ -31,4 +31,8 @@ class Book < ApplicationRecord
             self.errors.add(:publication_date, "cannot be in the future")
         end
     end
+
+    def self.top_rated(number)
+        self.order(rating: :desc).limit(number)
+    end
 end
