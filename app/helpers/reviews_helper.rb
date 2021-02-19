@@ -11,6 +11,14 @@ module ReviewsHelper
         end
     end
 
+    def reviews_title
+        if params[:book_id]
+            tag.h1("All Reviews of '#{@book.title}'")
+        else
+            tag.h1("All Reviews")
+        end
+    end
+
     def authorized_to_edit_review?(review)
         review.reviewer == current_user
     end

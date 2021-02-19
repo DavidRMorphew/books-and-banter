@@ -25,11 +25,13 @@ class ReviewsController < ApplicationController
   end
 
   def index
-    binding.pry
     if params[:book_id] && @book = Book.find_by(id: params[:book_id])
       @reviews = @book.reviews
-    else
+    elsif admin?
       @reviews = Review.all
+    else
+      flash[:message] = "That book was not found. Please select a book."
+      redirect_to books_path
     end
   end
 
