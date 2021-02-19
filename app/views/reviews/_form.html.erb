@@ -1,0 +1,15 @@
+
+
+    <%= f.hidden_field :reviewed_book_id %>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %><br>
+    <%= f.label :content %><br>
+    <%= f.text_area :content %><br>
+    <%= f.label :rating %> (1–10)<br>
+    <%= f.number_field :rating, in: 1..10 %><br>
+    <%= f.label :recommend %>?
+    <%= f.check_box :recommend %><br>
+    <%= f.label :kid_friendly %>?
+    <%= f.check_box :kid_friendly %><br>
+    <%= f.submit %>
+

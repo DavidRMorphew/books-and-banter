@@ -1,4 +1,4 @@
-<h2>Add a New Review:</h2>
+<h2>Edit Review:</h2>
 <%= review_title %>
 <% if @review.errors.any? %>
   <div id="error_explanation">
@@ -9,6 +9,6 @@
     </ul>
   </div>
 <% end %>
-<%= form_for @review, url: book_reviews_path do |f| %>
+<%= form_for @review, url: review_path(@review.id) do |f| %>
     <%= render partial: 'form', locals: { f: f } %>
 <% end %>

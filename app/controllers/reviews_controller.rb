@@ -24,6 +24,11 @@ class ReviewsController < ApplicationController
     @book = @review.reviewed_book
   end
 
+  def edit
+    @review = Review.find_by(id: params[:id])
+    @book = @review.reviewed_book
+  end
+
   private
     
   def review_params
