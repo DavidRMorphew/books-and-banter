@@ -12,7 +12,11 @@ module ReviewsHelper
     end
 
     def authorized_to_edit_review?(review)
-        if review.reviewer != current_user 
+        review.reviewer == current_user
+    end
+    
+    def redirect_if_not_authorized_to_edit_review(review)
+        if !authorized_to_edit_review?(review)
             flash[:message] = "You are not authorized to edit that review"
             redirect_to user_path(current_user)
         end

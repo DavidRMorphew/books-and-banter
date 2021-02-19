@@ -5,7 +5,7 @@
 <p>Recommended? <%= display_boolean_yes_no(@review.recommend) %></p>
 <p>Kid Friendly? <%= display_boolean_yes_no(@review.kid_friendly) %></p>
 
-<%= link_to "Edit this Review", edit_review_path(@review.id) if @review.reviewer == current_user %>
+<%= link_to "Edit this Review", edit_review_path(@review.id) if authorized_to_edit_review?(@review) %>
 <%= link_to "Delete this Book Review", review_path(@review.id), method: "delete" if authorized_to_destroy?(@review) %>
 <%# Link to All Reviews of this book %>
 <%# link to all my reviews? %>
