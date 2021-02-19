@@ -21,7 +21,7 @@ class Review < ApplicationRecord
         ]
         submitted_text = self.title.downcase + " " + self.content.downcase
 
-        if inappropriate_language.any? { |phrase|  submitted_text.scan(/(#{phrase})/) }
+        if inappropriate_language.any? { |phrase|  submitted_text.match(/(#{phrase})/) }
             self.errors.add(:appropriate_language, "is required for reviews")
         end
     end

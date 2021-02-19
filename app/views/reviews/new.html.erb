@@ -1,6 +1,16 @@
 <%# Make a method for the title %>
-<h1><%= current_user.username + "\'s Review of " + @review.reviewed_book.title %></h1>
+<h1><%= current_user.username + "\'s Review of " + @book.title %></h1>
+<% if @review.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+      <% @review.errors.full_messages.each do |message| %>
+        <li><%= message %>.</li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 <%= form_for @review, url: book_reviews_path do |f| %>
+    <%= f.hidden_field :reviewed_book_id %>
     <%= f.label :title %><br>
     <%= f.text_field :title %><br>
     <%= f.label :content %><br>
