@@ -29,6 +29,21 @@ class ReviewsController < ApplicationController
     @book = @review.reviewed_book
   end
 
+  def update
+    @review = Review.find_by(id: params[:id])
+      if @review.reviewer != current_user 
+        flash[:message] = "You are not authorized to edit that review"
+        redirect_to user_path(current_user)
+      elsif @review.update(review_params)
+        redirect_to review_path(@review.id)
+      else
+        @book = @review.reviewed_book
+        render :edit
+      end
+  end
+
+
+
   private
     
   def review_params
