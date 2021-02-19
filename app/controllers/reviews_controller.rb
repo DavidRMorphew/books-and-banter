@@ -6,11 +6,17 @@ class ReviewsController < ApplicationController
     @review = current_user.reviews.build(reviewed_book: book)
   end
 
-  
+
 
   def index
   end
 
   def show
+  end
+
+  private
+    
+  def review_params
+      params.require(:review).permit(:title, :content, :rating, :recommend, :kid_friendly)
   end
 end

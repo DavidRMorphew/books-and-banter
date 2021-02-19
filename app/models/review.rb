@@ -23,10 +23,4 @@ class Review < ApplicationRecord
             self.errors.add(:appropriate_language, "is required for reviews")
         end
     end
-
-    private
-    
-    def review_params
-        params.require(:review).permit(:title, :content, :rating, :recommend, :kid_friendly)
-    end
 end
