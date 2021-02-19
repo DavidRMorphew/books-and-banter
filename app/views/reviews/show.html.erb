@@ -6,4 +6,6 @@
 <p>Kid Friendly? <%= display_boolean_yes_no(@review.kid_friendly) %></p>
 
 <%= link_to "Edit this Review", edit_review_path(@review.id) if @review.reviewer == current_user %>
-<%# Add Delete link for current_user and admin %>
+<%= link_to "Delete this Book Review", review_path(@book.id), method: "delete" %>
+<%# Link to All Reviews of this book %>
+<%# link to all my reviews? %>
