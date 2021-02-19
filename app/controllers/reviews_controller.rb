@@ -39,9 +39,9 @@ class ReviewsController < ApplicationController
     @review = Review.find_by(id: params[:id])
 
     authorized_to_edit_review?(@review)
-      
+    # Seems to be hackable upon multiple attempts - why?
     if @review.update(review_params)
-        redirect_to review_path(@review.id)
+      redirect_to review_path(@review.id)
     else
       @book = @review.reviewed_book
       render :edit
