@@ -1,2 +1,6 @@
-<h1>Reviews#show</h1>
-<p>Find me in app/views/reviews/showedit.html.erb</p>
+<h1><%= current_user.username + "\'s Review of " + @book.title %></h1>
+<h4><%= @review.title %><h4>
+<p><%= @review.content %></p>
+<p><%= @review.rating %></p>
+<p>Recommended? <%= display_boolean_yes_no(@review.recommend) %></p>
+<p>Kid Friendly? <%= display_boolean_yes_no(@review.kid_friendly) %></p>
