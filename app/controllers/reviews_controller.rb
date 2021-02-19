@@ -51,7 +51,7 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review = Review.find_by(id: params[:id])
-    authorized_to_destroy?
+    authorized_to_destroy?(@review)
     @review.destroy
     redirect_to books_path
   end
