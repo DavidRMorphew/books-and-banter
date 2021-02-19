@@ -4,3 +4,6 @@
 <p><%= @review.rating %></p>
 <p>Recommended? <%= display_boolean_yes_no(@review.recommend) %></p>
 <p>Kid Friendly? <%= display_boolean_yes_no(@review.kid_friendly) %></p>
+
+<%= link_to "Edit this Review", edit_review_path(@review.id) if @review.reviewer == current_user %>
+<%# Add Delete link for current_user and admin %>
