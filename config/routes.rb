@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :reviews, only: [:index, :new, :create]
   end
 
-  get '/books/top_rated/:number', to: "books#top_rated"
+  get '/books/most_reviewed/:number', to: "books#most_reviewed"
   
   scope '/admin' do
     resources :reviews, only: [:index]

@@ -33,8 +33,10 @@ class Book < ApplicationRecord
     end
 
     # change to most_reviewed for scoping
-    def self.top_rated
-        self.order(rating: :desc)
+    def self.most_reviewed
+        # self.order(rating: :desc)
+        self.joins(:reviews).order(reviews: :desc).distinct
+        # binding.pry
     end
 
     def aggregate_book_rating

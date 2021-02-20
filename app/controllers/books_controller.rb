@@ -52,8 +52,8 @@ class BooksController < ApplicationController
     redirect_to books_path
   end
 
-  def top_rated
-    @books = Book.top_rated.limit(params[:number])
+  def most_reviewed
+    @books = Book.most_reviewed.limit(params[:number])
     render :index
   end
 
