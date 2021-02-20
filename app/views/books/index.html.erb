@@ -10,9 +10,6 @@
         by Highest Rated <%= check_box_tag :top_rated %><br>
     <%= submit_tag "Filter" %>
 <% end %>
-<%= form_tag books_path, method: :get do %>
-    <%= submit_tag "Clear" %>
-<% end %>
 <ul>
     <% if admin? %>
         <div><h2><%= link_to "Add a New Book", new_book_path %></h2></div>
