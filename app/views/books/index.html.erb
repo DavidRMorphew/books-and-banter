@@ -1,7 +1,12 @@
 <%= book_index_title_display %>
 <h4>Click on any title to see more information, check out the book, or write a review.</h4>
 
-
+<h3>Filter Results:</h3>
+<%= form_tag books_path, method: :get do %>
+    Top Rated <%= check_box_tag :top_rated %><br>
+    Newest <%= check_box_tag :newest %><br>
+    <%= submit_tag "Filter" %>
+<% end %>
 <ul>
     <% if admin? %>
         <div><h2><%= link_to "Add a New Book", new_book_path %></h2></div>

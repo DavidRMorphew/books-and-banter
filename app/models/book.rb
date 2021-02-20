@@ -42,4 +42,8 @@ class Book < ApplicationRecord
     def aggregate_book_rating
         self.reviews.average(:rating)
     end
+
+    def top_rated
+        
+    end
 end

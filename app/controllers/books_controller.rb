@@ -20,7 +20,12 @@ class BooksController < ApplicationController
 
   def index
     # check for login
-    @books = Book.all
+    binding.pry
+    if params[:top_rated]
+      
+    else
+      @books = Book.all
+    end
   end
 
   def show
