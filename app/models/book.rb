@@ -32,11 +32,12 @@ class Book < ApplicationRecord
         end
     end
 
+    # change to most_reviewed for scoping
     def self.top_rated
         self.order(rating: :desc)
     end
 
     def aggregate_book_rating
-        binding.pry
+        self.reviews.average(:rating)
     end
 end
