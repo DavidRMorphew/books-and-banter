@@ -19,7 +19,6 @@ class BooksController < ApplicationController
   end
 
   def index
-    # check for login
     search_keys = ["search_author_name", "most_recently_added", "most_recently_published", "ordered_by_aggregate_ratings"]
     filter_keys = search_keys.select do |key|
       params["#{key}"]
@@ -28,15 +27,12 @@ class BooksController < ApplicationController
     filter_keys.each do |key|
       search_hash[key] = params["#{key}"]
     end
-    # binding.pry
+    binding.pry
     if !filter_keys.empty?
-      # binding.pry
       result = Book
       search_hash.each do |method_name, value|
-        # binding.pry
         value == "1" ? result = result.send("#{method_name}") : result = result.send("#{method_name}", value)
       end
-      # binding.pry
       if !result.empty?
         @books = result
       else
