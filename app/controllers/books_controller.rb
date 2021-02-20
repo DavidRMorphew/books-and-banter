@@ -20,15 +20,19 @@ class BooksController < ApplicationController
 
   def index
     # check for login
-    search_keys = ["most_recently_added", "has_reviews", "ordered_by_aggregate_price"]
-    if filters = search_keys.select {|key| params["#{key}"] }
+    search_keys = ["most_recently_added", "has_reviews", "ordered_by_aggregate_ratings"]
+    filters = search_keys.select { |key| params["#{key}"] }
+    # binding.pry
+    if !filters.empty?
+      # binding.pry
       result = Book
-      @books = filters.each do |method_name|
+      filters.each do |method_name|
         result = result.send("#{method_name}")
       end
+      @books = result
     else
       @books = Book.all
-     end
+    end
   end
 
   def show
