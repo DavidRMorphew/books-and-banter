@@ -58,4 +58,8 @@ class Book < ApplicationRecord
     def self.most_recently_published
         self.order(publication_date: :desc)
     end
+
+    def self.search_author_name(author_query)
+        Book.where("authors LIKE ?", "%#{author_query}%")
+    end
 end
