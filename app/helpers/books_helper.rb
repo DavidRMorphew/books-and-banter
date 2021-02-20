@@ -8,6 +8,8 @@ module BooksHelper
     end
 
     def display_aggregate_book_rating(book)
-        "#{book.aggregate_book_rating.round(2)} Average User Rating"
+        if book.aggregate_book_rating
+            "#{book.aggregate_book_rating.round(2)} Average User Rating"
+        end
     end
 end
