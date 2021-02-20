@@ -23,7 +23,7 @@ class BooksController < ApplicationController
     # binding.pry
     if params[:has_reviews]
       @books = Book.has_reviews
-    elsif params[:top_rated]
+    elsif params[:highest_rated]
       @books = Book.ordered_by_aggregate_ratings
     else
       @books = Book.all
