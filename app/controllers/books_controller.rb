@@ -21,15 +21,14 @@ class BooksController < ApplicationController
   def index
     # check for login
     search_keys = ["most_recently_added", "has_reviews", "ordered_by_aggregate_price"]
-    if params[:most_recently_added]
-      @books = Book.most_recently_added
-    elsif params[:has_reviews]
-      @books = Book.has_reviews
-    elsif params[:highest_rated]
-      @books = Book.ordered_by_aggregate_ratings
+    if filters = search_keys.select {|key| params["#{key}"] }
+      result = Book
+      @books = filters.each do |method_name|
+        result = result.send("#{method_name}")
+      end
     else
       @books = Book.all
-    end
+     end
   end
 
   def show
