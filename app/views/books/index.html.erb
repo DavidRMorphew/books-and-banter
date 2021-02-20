@@ -4,10 +4,11 @@
 <h3>Order and Filter Results:</h3>
 <%= form_tag books_path, method: :get do %>
     <strong>Filter:</strong><br>
-        Reviewed <%= check_box_tag :has_reviews %><br>
+    
     <strong>Order:</strong><br> 
         by Most Recently Added <%= check_box_tag :most_recently_added %><br>
-        by Highest Rated <%= check_box_tag :ordered_by_aggregate_price %><br>
+        by Most Recently Published <%= check_box_tag :most_recently_published %><br>
+        by Highest Rated <%= check_box_tag :ordered_by_aggregate_ratings %><br>
     <%= submit_tag "Filter" %>
 <% end %>
 <ul>

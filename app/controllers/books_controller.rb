@@ -20,8 +20,8 @@ class BooksController < ApplicationController
 
   def index
     # check for login
-    search_keys = ["most_recently_added", "has_reviews", "ordered_by_aggregate_ratings"]
-    filters = search_keys.select { |key| params["#{key}"] }
+    filter_keys = ["most_recently_added", "most_recently_published", "ordered_by_aggregate_ratings"]
+    filters = filter_keys.select { |key| params["#{key}"] }
     # binding.pry
     if !filters.empty?
       # binding.pry
@@ -29,7 +29,12 @@ class BooksController < ApplicationController
       filters.each do |method_name|
         result = result.send("#{method_name}")
       end
-      @books = result
+      if !result.empty?
+        @books = result
+      else
+        flash[:message] = "No results found for those criteria."
+        @books = Book.all
+      end
     else
       @books = Book.all
     end
