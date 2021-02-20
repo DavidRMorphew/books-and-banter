@@ -20,9 +20,11 @@ class BooksController < ApplicationController
 
   def index
     # check for login
-    binding.pry
-    if params[:top_rated]
-      
+    # binding.pry
+    if params[:has_reviews]
+      @books = Book.has_reviews
+    elsif params[:top_rated]
+      @books = Book.ordered_by_aggregate_ratings
     else
       @books = Book.all
     end

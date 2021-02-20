@@ -43,7 +43,12 @@ class Book < ApplicationRecord
         self.reviews.average(:rating)
     end
 
-    def top_rated
-        
+    def self.has_reviews
+        # binding.pry
+        self.all.select {|book| !book.reviews.empty? }
+    end
+
+    def self.ordered_by_aggregate_ratings
+        self.has_reviews.sort_by { |book| book.aggregate_book_rating }
     end
 end

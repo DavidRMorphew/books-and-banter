@@ -1,10 +1,13 @@
 <%= book_index_title_display %>
 <h4>Click on any title to see more information, check out the book, or write a review.</h4>
 
-<h3>Filter Results:</h3>
+<h3>Order and Filter Results:</h3>
 <%= form_tag books_path, method: :get do %>
-    Top Rated <%= check_box_tag :top_rated %><br>
-    Newest <%= check_box_tag :newest %><br>
+    <strong>Filter:</strong><br>
+        Reviewed <%= check_box_tag :has_reviews %><br>
+    <strong>Order:</strong><br> 
+        by Most Recently Added <%= check_box_tag :newest %><br>
+        by Highest Rated <%= check_box_tag :top_rated %><br>
     <%= submit_tag "Filter" %>
 <% end %>
 <ul>
