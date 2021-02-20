@@ -1,4 +1,7 @@
 <h1>Log In To See Books and Write Reviews!</h1>
+
+<h3>If you don't already have an account, please <%= link_to "Sign Up", signup_path %>.</h3>
+
 <%= form_with(url: '/login', locals: true) do |f| %>
     <%= f.label :email %><br>
     <%= f.email_field :email %><br><br>
