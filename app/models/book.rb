@@ -44,7 +44,6 @@ class Book < ApplicationRecord
     end
 
     def self.has_reviews
-        # binding.pry
         self.all.select {|book| !book.reviews.empty? }
     end
 
