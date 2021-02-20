@@ -36,6 +36,6 @@ module ReviewsHelper
     end
 
     def user_reviewed_book_already?(book)
-        current_user.reviewed_books.where(reviewed_book: book)
+        !current_user.reviews.where(reviewed_book: book).empty?
     end
 end

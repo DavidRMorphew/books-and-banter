@@ -35,4 +35,8 @@ class Book < ApplicationRecord
     def self.top_rated
         self.order(rating: :desc)
     end
+
+    def aggregate_book_rating
+        binding.pry
+    end
 end
