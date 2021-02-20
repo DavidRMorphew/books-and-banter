@@ -50,4 +50,8 @@ class Book < ApplicationRecord
     def self.ordered_by_aggregate_ratings
         self.has_reviews.sort_by { |book| book.aggregate_book_rating }
     end
+
+    def self.most_recently_added
+        self.order(created_at: :desc)
+    end
 end

@@ -21,7 +21,9 @@ class BooksController < ApplicationController
   def index
     # check for login
     # binding.pry
-    if params[:has_reviews]
+    if params[:most_recently_added]
+      @books = Book.most_recently_added
+    elsif params[:has_reviews]
       @books = Book.has_reviews
     elsif params[:highest_rated]
       @books = Book.ordered_by_aggregate_ratings
