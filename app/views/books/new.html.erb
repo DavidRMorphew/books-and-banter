@@ -1,11 +1,14 @@
 <h1>Add a New Book to the Library</h1>
 
-<h3>Search Results.<br> Would like to add this book to the library?</h3>
-<%= form_for @google_books_instance do |f| %>
-    <%= @google_books_instance.title %><br>
-    <%= @google_books_instance.display_authors %><br>
-    <%= @google_books_instance.display_description %><br>
-    <%= f.submit "Add Book to Library" %>
+<% if @google_books_instance%>
+    <h3>Search Results.<br> Would like to add this book to the library?</h3>
+    <%= form_for @google_books_instance do |f| %>
+        <%= @google_books_instance.title %><br>
+        <%= @google_books_instance.display_authors %><br>
+        <%= @google_books_instance.display_description %><br>
+        <input type="hidden" name="google_books_instance_isbn" value="<%=@google_books_instance.isbn%>"/>
+        <%= f.submit "Add Book to Library" %>
+    <% end %>
 <% end %>
 
 <h4>Search for a New Book from Google Books</h4>
@@ -18,6 +21,7 @@
     <%= submit_tag "Search" %>
 <% end %>
 </ul>
+<%# add logic so that this disappears if search results returned %>
 <h4>Or Manually Add a New Book<h4>
 <%= render partial: 'form', locals: { book: @book } %>
 

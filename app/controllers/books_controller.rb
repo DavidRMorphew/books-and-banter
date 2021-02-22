@@ -18,7 +18,13 @@ class BooksController < ApplicationController
 
   def create
     binding.pry
-    @book = Book.new(book_params)
+    if params[:google_books_instance_isbn]
+      search_query = "isbn:" + params[:google_books_instance_isbn].split(",").first
+      @book = Api.fetch(search_query)
+    else
+      @book = Book.new(book_params)
+    end
+    
     if @book.save
       redirect_to book_path(@book.id)
     else
