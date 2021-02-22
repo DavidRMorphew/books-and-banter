@@ -5,8 +5,11 @@ class BooksController < ApplicationController
 
   def new
     # only for admin and link visible in admin layout
-      @book = Book.new
-      # order by created_at by default
+    binding.pry
+    if params[:search]
+      binding.pry
+    end
+    @book = Book.new
   end
 
   def create

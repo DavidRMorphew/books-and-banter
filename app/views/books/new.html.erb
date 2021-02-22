@@ -1,3 +1,12 @@
 <h1>Add a New Book to the Library</h1>
 <%= render partial: 'form', locals: { book: @book } %>
-<%# data_list = [book instances] %>
+<h4>Or Search for a New Book from Google Books</h4>
+<ul>
+<%= form_tag new_book_path, method: :get do %>
+    <li>Author: <br><%= text_field_tag :search_author %></li>
+    <li>Title: <br><%= text_field_tag :search_title %></li>
+    <li>Category: <br><%= text_field_tag :search_category %></li>
+    <li>ISBN: <br><%= text_field_tag :search_isbn %></li>
+    <%= submit_tag "Search" %>
+<% end %>
+<ul>
