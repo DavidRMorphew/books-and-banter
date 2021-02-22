@@ -6,7 +6,13 @@ class BooksController < ApplicationController
   def new
     # only for admin and link visible in admin layout
     if params[:search]
-      Book.format_query(params[:search])
+      query_for_api = Book.format_query(params[:search])
+      binding.pry
+      if @google_books_instances = Api.fetch_books(query_for_api)
+        @google_books_instances
+      else
+        flash[:message] = "No search results. Please try again."
+      end
     end
     @book = Book.new
   end
