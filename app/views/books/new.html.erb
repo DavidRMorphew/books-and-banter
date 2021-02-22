@@ -9,21 +9,23 @@
 
         <input type="hidden" name="google_books_instance_isbn" value="<%=@google_books_instance.isbn%>"/>
         <%= f.submit "Add Book to Library" %>
+        
     <% end %>
-<% end %>
+    <%= button_to "Start Over?", new_book_path, method: :get %>
 
-<h4>Search for a New Book from Google Books</h4>
-<ul>
-<%= form_tag new_book_path, method: :get do %>
-    <li>Author <br><%= text_field_tag '[search]author' %></li>
-    <li>Title <br><%= text_field_tag '[search]title' %></li>
-    <li>Category <br><%= text_field_tag '[search]category' %></li>
-    <li>ISBN (number only) <br><%= text_field_tag '[search]isbn' %></li>
-    <%= submit_tag "Search" %>
-<% end %>
-</ul>
-<%# add logic so that this disappears if search results returned %>
-<h4>Or Manually Add a New Book<h4>
-<%= render partial: 'form', locals: { book: @book } %>
+    <% else %>
 
+    <h4>Search for a New Book from Google Books</h4>
+    <ul>
+    <%= form_tag new_book_path, method: :get do %>
+        <li>Author <br><%= text_field_tag '[search]author' %></li>
+        <li>Title <br><%= text_field_tag '[search]title' %></li>
+        <li>Category <br><%= text_field_tag '[search]category' %></li>
+        <li>ISBN (number only) <br><%= text_field_tag '[search]isbn' %></li>
+        <%= submit_tag "Search" %>
+    <% end %>
+    </ul>
+    <h4>Or Manually Add a New Book<h4>
+    <%= render partial: 'form', locals: { book: @book } %>
+    <% end %>
 

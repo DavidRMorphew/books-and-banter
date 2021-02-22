@@ -7,7 +7,6 @@ class BooksController < ApplicationController
     # only for admin and link visible in admin layout
     if params[:search]
       query_for_api = Book.format_query(params[:search])
-      binding.pry
       if @google_books_instance = Api.fetch_books(query_for_api).compact.first
         @google_books_instance
       else
