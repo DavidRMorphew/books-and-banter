@@ -6,7 +6,7 @@ class BooksController < ApplicationController
   def new
     # only for admin and link visible in admin layout
     if params[:search]
-      binding.pry
+      Book.format_query(params[:search])
     end
     @book = Book.new
   end

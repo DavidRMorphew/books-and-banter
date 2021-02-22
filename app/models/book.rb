@@ -7,7 +7,10 @@ class Book < ApplicationRecord
     validates :title, uniqueness: { scope: :authors, message: "with the same author is already in our libray" }
     validate :publication_date_year_valid, if: :publication_date
 
-    # format query method
+    def self.format_query(queries)
+        binding.pry
+        formatted_google_books_search_query = "intitle:#{queries[:title]}+inauthor:#{queries[:author]}+subject:#{queries[:categories]}" 
+    end
 
     def self.books_instances_array_from_api(query)
         if Api.fetch_books(query).nil?
