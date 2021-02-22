@@ -13,7 +13,7 @@
     <% end %>
     <%= button_to "Start Over?", new_book_path, method: :get %>
 
-    <% else %>
+<% else %>
 
     <h4>Search for a New Book from Google Books</h4>
     <ul>
@@ -27,5 +27,5 @@
     </ul>
     <h4>Or Manually Add a New Book<h4>
     <%= render partial: 'form', locals: { book: @book } %>
-    <% end %>
+<% end %>
 
