@@ -7,6 +7,16 @@ class Book < ApplicationRecord
     validates :title, uniqueness: { scope: :authors, message: "with the same author is already in our libray" }
     validate :publication_date_year_valid, if: :publication_date
 
+    # format query method
+
+    def self.books_instances_array_from_api(query)
+        if Api.fetch_books(query).nil?
+            "No matches found. Please try again."
+        else 
+            new_books_array = Api.fetch_books(query)
+        end
+    end
+
     def display_description
         !self.description.match(/[.]\z/) ? self.description << "." : self.description
     end

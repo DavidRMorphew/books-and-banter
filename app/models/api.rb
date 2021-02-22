@@ -7,15 +7,10 @@ class Api < ApplicationRecord
         response = Net::HTTP.get(uri)
         google_books_hash = JSON.parse(response)
         books_array = google_books_hash["items"]
-        # binding.pry
-
-        if !books_array
-            binding.pry
-
-            # come back to how to display this:
-            books_array = ["No matches found."]
-        end
         binding.pry
+
+        return nil if !books_array
+        
         books_array.map do |book_hash|
             binding.pry
             book_assignment_hash = {}
