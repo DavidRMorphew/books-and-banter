@@ -5,7 +5,7 @@ class Book < ApplicationRecord
     has_many :reviewers, through: :reviews, source: :reviewer
     validates :authors, :title, :description, :publisher, :publication_date, :categories, :isbn, presence: true
     validates :title, uniqueness: { scope: :authors, message: "with the same author is already in our libray" }
-    validate :publication_date_year_valid
+    validate :publication_date_year_valid, if: :publication_date
 
     def display_description
         !self.description.match(/[.]\z/) ? self.description << "." : self.description
