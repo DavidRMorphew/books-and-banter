@@ -14,7 +14,7 @@ class Book < ApplicationRecord
         submitted_queries[:author] = "inauthor:#{submitted_queries[:author]}" if submitted_queries[:author]
         submitted_queries[:category] = "subject:#{submitted_queries[:category]}" if submitted_queries[:category]
         submitted_queries[:isbn] = "isbn:#{submitted_queries[:isbn]}" if submitted_queries[:isbn]
-        binding.pry
+        # binding.pry
         formatted_search_query = submitted_queries.values.join("+") << "&maxResults=1"
     end
 # Am I using this method or did I forget about it?

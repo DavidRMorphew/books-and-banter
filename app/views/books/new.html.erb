@@ -1,7 +1,12 @@
 <h1>Add a New Book to the Library</h1>
 
-<h3>Search Results.<br> Would like to add this book to the library</h3>
-
+<h3>Search Results.<br> Would like to add this book to the library?</h3>
+<%= form_for @google_books_instance do |f| %>
+    <%= @google_books_instance.title %><br>
+    <%= @google_books_instance.display_authors %><br>
+    <%= @google_books_instance.display_description %><br>
+    <%= f.submit "Add Book to Library" %>
+<% end %>
 
 <h4>Search for a New Book from Google Books</h4>
 <ul>

@@ -7,17 +7,17 @@ class BooksController < ApplicationController
     # only for admin and link visible in admin layout
     if params[:search]
       query_for_api = Book.format_query(params[:search])
-      if @google_books_instance = Api.fetch_books(query_for_api)
+      if @google_books_instance = Api.fetch_books(query_for_api).first
         @google_books_instance
       else
         flash[:message] = "No search results. Please try again."
       end
     end
     @book = Book.new
-    binding.pry
   end
 
   def create
+    binding.pry
     @book = Book.new(book_params)
     if @book.save
       redirect_to book_path(@book.id)
