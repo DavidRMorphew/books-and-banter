@@ -1,14 +1,8 @@
 <h2>Edit Review:</h2>
 <%= review_title %>
-<% if @review.errors.any? %>
-  <div id="error_explanation">
-    <ul>
-      <% @review.errors.full_messages.each do |message| %>
-        <li><%= message %>.</li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+
+<%= render partial: 'shared/error_display', locals: { object: @review }%>
+
 <%= form_for @review, url: review_path(@review.id) do |f| %>
     <%= render partial: 'form', locals: { f: f } %>
 <% end %>
