@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  # Add before_action to find book in create, show, edit, delete
+  # Add before_action to find book in show, edit, delete called set_book
   before_action :redirect_if_not_logged_in
   before_action :redirect_if_not_admin, only: [:new, :create, :edit, :update, :destroy]
 
@@ -7,7 +7,8 @@ class BooksController < ApplicationController
     # only for admin and link visible in admin layout
     if params[:search]
       query_for_api = Book.format_query(params[:search])
-      if @google_books_instance = Api.fetch_books(query_for_api).first
+      binding.pry
+      if @google_books_instance = Api.fetch_books(query_for_api).compact.first
         @google_books_instance
       else
         flash[:message] = "No search results. Please try again."

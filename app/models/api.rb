@@ -1,7 +1,7 @@
 class Api < ApplicationRecord
     
     def self.fetch_books(query)
-        url = "https://www.googleapis.com/books/v1/volumes?q=#{query}&langRestrict=en&key=#{ENV["GOOGLE_BOOKS_API_KEY"]}"
+        url = "https://www.googleapis.com/books/v1/volumes?q=#{query}&langRestrict=en&printType=books&maxResults=40&key=#{ENV["GOOGLE_BOOKS_API_KEY"]}"
     
         uri = URI(url)
         response = Net::HTTP.get(uri)
