@@ -1,11 +1,14 @@
 <h1>Add a New Book to the Library</h1>
 
 <h3>Search Results.<br> Please select a book you would like to add to the library</h3>
-<%= form_tag books_path do %>
     <% @google_books_instances.each do |book| %>
+    <%= binding.pry %>
+    <%# only holding on to 1st instance in iteration %>
         Author(s): <%= book.display_authors %><br>
         Description: <%= book.display_description %></div>
-        <%= check_box_tag "Add to Library" %>
+        <%= form_tag books_path do %>
+            <%= check_box_tag "Add to Library" %>
+        <% end %>
     <% end %>
 <% end if @google_books_instances %>
 
