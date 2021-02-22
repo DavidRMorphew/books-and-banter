@@ -9,13 +9,13 @@ class Book < ApplicationRecord
 
     def self.format_query(queries)
         submitted_queries = queries.reject { |k,v| v.empty? }
-        binding.pry
 
-        queries[:title] = "intitle:#{queries[:title]}" if queries[:title]
-        queries[:author] = "inauthor:#{queries[:author]}" if queries[:author]
-        queries[:categories] = "subject:#{queries[:categories]}" if queries[:categories]
-        queries[:isbn] = "isbn:#{queries[:isbn]}" if queries[:isbn]
-        binding.pry
+        submitted_queries[:title] = "intitle:#{submitted_queries[:title]}" if submitted_queries[:title]
+        submitted_queries[:author] = "inauthor:#{submitted_queries[:author]}" if submitted_queries[:author]
+        submitted_queries[:category] = "subject:#{submitted_queries[:category]}" if submitted_queries[:category]
+        submitted_queries[:isbn] = "isbn:#{submitted_queries[:isbn]}" if submitted_queries[:isbn]
+
+        formatted_search_query = submitted_queries.values.join("+")
     end
 
     def self.books_instances_array_from_api(query)
