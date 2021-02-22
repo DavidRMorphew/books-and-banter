@@ -7,12 +7,11 @@ class Api < ApplicationRecord
         response = Net::HTTP.get(uri)
         google_books_hash = JSON.parse(response)
         books_array = google_books_hash["items"]
-        # binding.pry
 
         return nil if !books_array
         
         books_array.map do |book_hash|
-            # binding.pry
+
             book_assignment_hash = {}
             # better way to do this?
             volume_info = book_hash["volumeInfo"]
@@ -33,8 +32,7 @@ class Api < ApplicationRecord
                 isbn_hash["identifier"] unless isbn_hash["identifier"].match(/\D[^\d][^X]/)
             end.join(", ") if volume_info["industryIdentifiers"]
             
-            b = Book.new(book_assignment_hash)
-            binding.pry
+            Book.new(book_assignment_hash)
         end
     end
 
