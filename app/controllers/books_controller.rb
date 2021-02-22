@@ -27,7 +27,7 @@ class BooksController < ApplicationController
     filter_keys.each do |key|
       search_hash[key] = params["#{key}"]
     end
-    binding.pry
+    # binding.pry
     if !filter_keys.empty?
       result = Book
       search_hash.each do |method_name, value|
