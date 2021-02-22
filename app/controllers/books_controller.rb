@@ -5,7 +5,6 @@ class BooksController < ApplicationController
 
   def new
     # only for admin and link visible in admin layout
-    binding.pry
     if params[:search]
       binding.pry
     end
