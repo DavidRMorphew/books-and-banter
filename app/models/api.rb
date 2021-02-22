@@ -16,17 +16,23 @@ class Api < ApplicationRecord
             book_assignment_hash = {}
             # better way to do this?
             volume_info = book_hash["volumeInfo"]
+            
             book_assignment_hash[:authors] = volume_info["authors"].join(", ") if volume_info["authors"]
             book_assignment_hash[:description] = volume_info["description"] if volume_info["description"]
             book_assignment_hash[:publisher] = volume_info["publisher"] if volume_info["publisher"]
             book_assignment_hash[:publication_date] = volume_info["publishedDate"].split("-").first.to_s if volume_info["publishedDate"]
             book_assignment_hash[:categories] = volume_info["categories"].join(", ") if volume_info["categories"]
+            
             if volume_info["subtitle"]
                 book_assignment_hash[:title] = volume_info["title"] + ": " + volume_info["subtitle"]
             else
                 book_assignment_hash[:title] = volume_info["title"]
             end
-
+            
+            book_assignment_hash[:isbn] = volume_info["industryIdentifiers"].map do |isbn_hash|
+                isbn_hash["identifier"] unless isbn_hash["identifier"].match(/\D[^\d][^X]/)
+            end.join(", ") if volume_info["industryIdentifiers"]
+            
             b = Book.new(book_assignment_hash)
             binding.pry
         end
