@@ -72,4 +72,8 @@ class Book < ApplicationRecord
     def self.search_author_name(author_query)
         Book.where("authors LIKE ?", "%#{author_query}%")
     end
+
+    def self.search_title(title_query)
+        Book.where("title LIKE ?", "%#{title_query}%")
+    end
 end

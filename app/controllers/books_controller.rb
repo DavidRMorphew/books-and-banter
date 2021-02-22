@@ -19,7 +19,7 @@ class BooksController < ApplicationController
   end
 
   def index
-    search_keys = ["search_author_name", "most_recently_added", "most_recently_published", "ordered_by_aggregate_ratings"]
+    search_keys = ["search_author_name", "search_title", "most_recently_added", "most_recently_published", "ordered_by_aggregate_ratings"]
     filter_keys = search_keys.select do |key|
       params["#{key}"]
     end
