@@ -17,7 +17,6 @@ class BooksController < ApplicationController
   end
 
   def create
-    binding.pry
     if params[:google_books_instance_isbn]
       search_query = "isbn:" + params[:google_books_instance_isbn].split(",").first
       @book = Api.fetch_books(search_query).first

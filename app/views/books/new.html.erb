@@ -1,11 +1,12 @@
 <h1>Add a New Book to the Library</h1>
-
-<% if @google_books_instance%>
+<%# books helper method to display search results or manual add, but not both %>
+<% if @google_books_instance %>
     <h3>Search Results.<br> Would like to add this book to the library?</h3>
     <%= form_for @google_books_instance do |f| %>
-        <%= @google_books_instance.title %><br>
-        <%= @google_books_instance.display_authors %><br>
-        <%= @google_books_instance.display_description %><br>
+        <strong><%= @google_books_instance.title %></strong><br>
+        
+        <%= render partial: 'author_description_display', locals: { book: @google_books_instance } %>
+
         <input type="hidden" name="google_books_instance_isbn" value="<%=@google_books_instance.isbn%>"/>
         <%= f.submit "Add Book to Library" %>
     <% end %>
