@@ -1,12 +1,4 @@
-<% if book.errors.any? %>
-  <div id="error_explanation">
-    <ul>
-      <% book.errors.full_messages.each do |message| %>
-        <li><%= message %>.</li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+<%= render partial: '/shared/error_display', locals: { object: @book } %>
 
 <ul>
 <%= form_for book do |f| %>
