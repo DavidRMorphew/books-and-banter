@@ -17,7 +17,7 @@ class Book < ApplicationRecord
 
         formatted_search_query = submitted_queries.values.join("+")
     end
-
+# Am I using this method or did I forget about it?
     def self.books_instances_array_from_api(query)
         if Api.fetch_books(query).nil?
             "No matches found. Please try again."

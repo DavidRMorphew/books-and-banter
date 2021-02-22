@@ -32,7 +32,9 @@ class Api < ApplicationRecord
                 isbn_hash["identifier"] unless isbn_hash["identifier"].match(/\D[^\d][^X]/)
             end.join(", ") if volume_info["industryIdentifiers"]
             
-            Book.new(book_assignment_hash)
+            if book = Book.new(book_assignment_hash).valid?
+                book
+            end
         end
     end
 
