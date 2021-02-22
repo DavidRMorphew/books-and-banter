@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       redirect_to user_path(user.id)
     else
       flash[:message] = "Email and/or password invalid. Please try again."
-      render :new
+      redirect_to "/login"
     end
   end
 
