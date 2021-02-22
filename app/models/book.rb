@@ -8,8 +8,14 @@ class Book < ApplicationRecord
     validate :publication_date_year_valid, if: :publication_date
 
     def self.format_query(queries)
+        submitted_queries = queries.reject { |k,v| v.empty? }
         binding.pry
-        formatted_google_books_search_query = "intitle:#{queries[:title]}+inauthor:#{queries[:author]}+subject:#{queries[:categories]}" 
+
+        queries[:title] = "intitle:#{queries[:title]}" if queries[:title]
+        queries[:author] = "inauthor:#{queries[:author]}" if queries[:author]
+        queries[:categories] = "subject:#{queries[:categories]}" if queries[:categories]
+        queries[:isbn] = "isbn:#{queries[:isbn]}" if queries[:isbn]
+        binding.pry
     end
 
     def self.books_instances_array_from_api(query)
