@@ -3,6 +3,8 @@ class ReviewsController < ApplicationController
 
   before_action :redirect_if_not_logged_in
   
+  # add set_review before action
+  
   def new
     # binding.pry
     @book = Book.find_by(id: params[:book_id])
