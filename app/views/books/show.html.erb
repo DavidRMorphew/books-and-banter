@@ -16,7 +16,7 @@
     <%= link_to "Remove this Book from the Library", book_path(@book.id), method: "delete" %><br>
 <% else  %>
 <%# logic  for checked out and available for checkout %>
-    <%= checkout_button_or_checked_out_status_display(@book) %>
+    <%= checkout_button_or_checked_out_status_display(@book) %><br>
     <%= link_to "Review this Book", new_book_review_path(@book.id) unless user_reviewed_book_already?(@book) %><br>
 <% end %>
 
