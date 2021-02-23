@@ -6,8 +6,8 @@
     <h2>My Book Reviews</h2>
     <% @reviews.each do |review| %>
         <div>
-        <%# create method to show username %>
-            <h3><%= review.reviewer.username %>'s Review of '<%= review.reviewed_book.title %>'</h3>
+        <%# create method to show username and reviewed_book_title %>
+            <h3><%= review.reviewer.username %>'s Review of '<%= link_to review.reviewed_book.title, book_path(review.reviewed_book.id) %>'</h3>
             <%= render partial: 'reviews/review_display', locals: { review: review }%>
         </div>
     <% end%>
