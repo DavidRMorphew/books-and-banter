@@ -7,24 +7,6 @@ class Book < ApplicationRecord
     validates :title, uniqueness: { scope: :authors, message: "with the same author is already in our libray" }
     validate :publication_date_year_valid, if: :publication_date
 
-    def search_keys_selection
-        search_keys = ["search_author_name", "search_title", "ordering_filter"]
-        selected_keys = search_keys.select do |key|
-            params["#{key}"]
-        end
-        search_hash = {}
-        selected_keys.each do |key|
-            search_hash[key] = params["#{key}"]
-        end
-    end
-
-    def search_filter_chaining_method
-        result = Book
-        search_hash.each do |method_name, value|
-          value == "1" ? result = result.send("#{method_name}") : result = result.send("#{method_name}", value)
-        end
-    end
-
     def self.format_query(queries)
         submitted_queries = queries.reject { |k,v| v.empty? }
 

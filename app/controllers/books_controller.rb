@@ -34,25 +34,28 @@ class BooksController < ApplicationController
 
   def index
     # helper called search_keys_selection
-    search_keys = ["search_author_name", "search_title", "most_recently_added", "most_recently_published", "ordered_by_aggregate_ratings"]
-    selected_keys = search_keys.select do |key|
-      params["#{key}"]
-    end
-    search_hash = {}
-    selected_keys.each do |key|
-      search_hash[key] = params["#{key}"]
-    end
+    # search_keys = ["search_author_name", "search_title", "most_recently_added", "most_recently_published", "ordered_by_aggregate_ratings"]
+    # selected_keys = search_keys.select do |key|
+    #   params["#{key}"]
+    # end
+    # search_hash = {}
+    # selected_keys.each do |key|
+    #   search_hash[key] = params["#{key}"]
+    # end
     # here
-
     # binding.pry
-    # search_filter_chaining_method
-    if !selected_keys.empty?
-      result = Book
-      search_hash.each do |method_name, value|
-        value == "1" ? result = result.send("#{method_name}") : result = result.send("#{method_name}", value)
-      end
-      if !result.empty?
-        @books = result
+    if !search_keys_selection.empty?
+      search_results = search_filter_chaining_method(search_keys_selection)
+      if !search_results.empty?
+
+   
+    # if !selected_keys.empty?
+    #   result = Book
+    #   search_hash.each do |method_name, value|
+    #     value == "1" ? result = result.send("#{method_name}") : result = result.send("#{method_name}", value)
+    #   end
+    #   if !result.empty?
+        @books = search_results
       else
         flash[:message] = "No results found for those criteria."
         @books = Book.all
@@ -105,5 +108,24 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:authors, :isbn, :title, :description, :publisher, :publication_date, :categories)
   end
+
+  def search_keys_selection
+    search_keys = ["search_author_name", "search_title", "ordering_filter"]
+    selected_keys = search_keys.select do |key|
+        !params["#{key}"].empty?
+    end
+    search_filters_hash = {}
+    selected_keys.each do |key|
+        search_filters_hash[key] = params["#{key}"]
+    end
+    search_filters_hash
+end
+
+def search_filter_chaining_method(search_filters_hash)
+    result = Book
+    search_filters_hash.each do |key, value|
+      key == "ordering_filter" ? result = result.send("#{value}") : result = result.send("#{key}", value)
+    end
+end
 
 end
