@@ -3,7 +3,14 @@
     <%= link_to "All Reviews", "/admin/reviews" %><br>
 <% else %>
     <h2>Checked-Out Books</h2>
-    <h2>My Book Reviews<h2>
+    <h2>My Book Reviews</h2>
+    <% @reviews.each do |review| %>
+        <div>
+        <%# create method to show username %>
+            <h3><%= review.reviewer.username %>'s Review of '<%= review.reviewed_book.title %>'</h3>
+            <%= render partial: 'reviews/review_display', locals: { review: review }%>
+        </div>
+    <% end%>
 <% end %>
 
 <%# Remember to move this to navbar %>

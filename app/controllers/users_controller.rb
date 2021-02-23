@@ -18,6 +18,7 @@ class UsersController < ApplicationController
   def show
     redirect_if_not_logged_in
     @user = User.find_by(id: params[:id])
+    @reviews = @user.reviews
     redirect_if_not_authorized_to_view(@user)
   end
 
