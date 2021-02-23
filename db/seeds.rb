@@ -8,6 +8,7 @@
 User.destroy_all
 Book.destroy_all
 Review.destroy_all
+Checkout.destroy_all
 
 User.create([
     {username:"LibraryAdmin", email:"bookmaster@library.com", password:"admin", admin: true}, 
