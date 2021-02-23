@@ -112,7 +112,7 @@ class BooksController < ApplicationController
   def search_keys_selection
     search_keys = ["search_author_name", "search_title", "ordering_filter"]
     selected_keys = search_keys.select do |key|
-        !params["#{key}"].empty?
+        !params["#{key}"].blank?
     end
     search_filters_hash = {}
     selected_keys.each do |key|
@@ -126,6 +126,7 @@ def search_filter_chaining_method(search_filters_hash)
     search_filters_hash.each do |key, value|
       key == "ordering_filter" ? result = result.send("#{value}") : result = result.send("#{key}", value)
     end
+    result
 end
 
 end
