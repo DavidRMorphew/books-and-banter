@@ -27,7 +27,7 @@ class Book < ApplicationRecord
     # end
 
     def display_description
-        !self.description.match(/[.]\z/) ? self.description << "." : self.description
+        !self.description.match(/[.?!]\z/) ? self.description << "." : self.description
     end
 
     def display_authors
