@@ -14,6 +14,8 @@
     <%= link_to "Our Library's Books", books_path %><br>
     <%= link_to "My Account Page", user_path(current_user) %><br>
     <%= link_to "Log Out", '/logout', method: 'delete' %>
+  <% else %>
+    <%= button_to "Log In With Google", '/auth/google_oath2' %>
   <% end %>
   <% if flash[:message] %>
     <div class="field_with_errors"><h2><%= flash[:message] %></h2></div>
