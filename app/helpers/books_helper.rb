@@ -33,4 +33,13 @@ module BooksHelper
             "#{book.aggregate_book_rating.round(2)} Average User Rating"
         end
     end
+
+    def checkout_button_or_checked_out_status_display(book)
+        binding.pry
+        if !book.currently_checked_out
+            button_to "Check this book out of the library", book_checkouts_path(book.id)
+        else
+            tag.h4("This book is currently checked out")
+        end
+    end
 end
