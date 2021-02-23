@@ -5,6 +5,10 @@ class SessionsController < ApplicationController
       redirect_to user_path(current_user)
     end
   end
+
+  def omniauth
+    
+  end
   
   def create
     user = User.find_by(email: params[:email].downcase)

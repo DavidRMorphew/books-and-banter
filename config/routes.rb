@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
+  get '/auth/google_oauth2/callback', to: 'sessions#omniauth'
+
   resources :books do
     resources :reviews, only: [:index, :new, :create]
   end
