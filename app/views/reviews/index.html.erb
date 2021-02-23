@@ -1,9 +1,9 @@
-<h1><%= reviews_title %></h1>
+<h1><%= reviews_page_title %></h1>
 <h2><%= display_aggregate_book_rating(@book) %></h2>
 <% @reviews.each do |review| %>
     <div>
         <%# create method to show username %>
-        <h3><%= review.reviewer.username %>'s Review</h3>
+        <h3><%= reviewer_username(review) %>'s Review</h3>
         <%= render partial: 'review_display', locals: { review: review }%>
     </div><br>
 <% end %>

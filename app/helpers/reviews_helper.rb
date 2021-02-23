@@ -11,7 +11,7 @@ module ReviewsHelper
         end
     end
 
-    def reviews_title
+    def reviews_page_title
         if params[:book_id]
             tag.h1("All Reviews of '#{@book.title}'")
         else
@@ -25,6 +25,14 @@ module ReviewsHelper
     
     def kid_friendly_display(review)
         "Kid Friendly? " + display_boolean_yes_no(review.kid_friendly)
+    end
+
+    def reviewer_username(review)
+        review.reviewer.username
+    end
+
+    def reviewed_book_title(review)
+        review.reviewed_book.title
     end
 
     def authorized_to_edit_review?(review)
