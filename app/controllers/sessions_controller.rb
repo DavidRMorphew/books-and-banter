@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   end
 
   def omniauth
-    
+    binding.pry
   end
   
   def create
