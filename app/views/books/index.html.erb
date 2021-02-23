@@ -7,9 +7,12 @@
         by Author: <%= text_field_tag :search_author_name %><br>
         by Title: <%= text_field_tag :search_title %><br>
     <strong>Order:</strong><br> 
-        by Most Recently Added <%= check_box_tag :most_recently_added %><br>
-        by Most Recently Published <%= check_box_tag :most_recently_published %><br>
-        by Highest Rated <%= check_box_tag :ordered_by_aggregate_ratings %><br>
+        <%# by Most Recently Added <%= check_box_tag :most_recently_added %>
+        <%# by Most Recently Published <%= check_box_tag :most_recently_published %>
+        <%# by Highest Rated <%= check_box_tag :ordered_by_aggregate_ratings %>
+        by Most Recently Added <%= radio_button_tag :ordering_filter, :most_recently_added%><br> 
+        by Most Recently Published <%= radio_button_tag :ordering_filter, :most_recently_published%><br> 
+        by Highest Rated <%= radio_button_tag :ordering_filter, :ordered_by_aggregate_ratings %><br>
     <%= submit_tag "Filter" %>
 <% end %>
 <ul>

@@ -33,16 +33,20 @@ class BooksController < ApplicationController
   end
 
   def index
+    # helper called search_keys_selection
     search_keys = ["search_author_name", "search_title", "most_recently_added", "most_recently_published", "ordered_by_aggregate_ratings"]
-    filter_keys = search_keys.select do |key|
+    selected_keys = search_keys.select do |key|
       params["#{key}"]
     end
     search_hash = {}
-    filter_keys.each do |key|
+    selected_keys.each do |key|
       search_hash[key] = params["#{key}"]
     end
+    # here
+
     # binding.pry
-    if !filter_keys.empty?
+    # search_filter_chaining_method
+    if !selected_keys.empty?
       result = Book
       search_hash.each do |method_name, value|
         value == "1" ? result = result.send("#{method_name}") : result = result.send("#{method_name}", value)
