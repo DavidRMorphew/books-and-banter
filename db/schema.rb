@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_23_135009) do
+ActiveRecord::Schema.define(version: 2021_02_23_191656) do
 
   create_table "books", force: :cascade do |t|
     t.string "authors"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2021_02_23_135009) do
     t.string "categories"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "currently_checked_out"
   end
 
   create_table "checkouts", force: :cascade do |t|
