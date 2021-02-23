@@ -39,7 +39,7 @@ module BooksHelper
         if !book.currently_checked_out
             button_to "Check this book out of the library", book_checkouts_path(book.id)
         else
-            tag.h4("This book is currently checked out")
+            tag.h4("This book is currently checked out.")
         end
     end
 end
