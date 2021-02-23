@@ -85,4 +85,8 @@ class Book < ApplicationRecord
     def self.search_title(title_query)
         Book.where("title LIKE ?", "%#{title_query}%")
     end
+
+    def self.search_description(description_query)
+        Book.where("description LIKE ?", "%#{description_query}%")
+    end
 end

@@ -110,7 +110,7 @@ class BooksController < ApplicationController
   end
 
   def search_keys_selection
-    search_keys = ["search_author_name", "search_title", "ordering_filter"]
+    search_keys = ["search_author_name", "search_title", "search_description", "ordering_filter"]
     selected_keys = search_keys.select do |key|
         !params["#{key}"].blank?
     end
