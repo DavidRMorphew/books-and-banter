@@ -35,7 +35,7 @@ class Api < ApplicationRecord
             if Book.new(book_assignment_hash).valid?
                 Book.new(book_assignment_hash)
             end
-        end
+        end.compact # validation check gives nil value when not valid
     end
 
 end

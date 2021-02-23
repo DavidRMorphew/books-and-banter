@@ -16,7 +16,7 @@ User.create([
     {username: "Agamemnon-Lord-of-Books", email: "bookking@hey.com", password: "pw"}
     ])
 
-Book.books_instances_array_from_api("subject:fiction&maxResults=40").each do |book|
+Api.fetch_books("subject:fiction").each do |book|
     if book.valid?
         book.save
     end
