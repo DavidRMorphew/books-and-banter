@@ -2,12 +2,13 @@ class BooksController < ApplicationController
   # Add before_action to find book in show, edit, delete called set_book
   before_action :redirect_if_not_logged_in
   before_action :redirect_if_not_admin, only: [:new, :create, :edit, :update, :destroy]
+  include BooksHelper
 
   def new
     if params[:search]
       query_for_api = Book.format_query(params[:search])
-      if Api.fetch_books(query_for_api)
-        @google_books_instance = Api.fetch_books(query_for_api).first
+      if fetched_books = Api.fetch_books(query_for_api)
+        @google_books_instance = fetched_books.first
       else
         flash[:message] = "No search results. Please try again."
         @book = Book.new
@@ -108,25 +109,5 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:authors, :isbn, :title, :description, :publisher, :publication_date, :categories)
   end
-
-  def search_keys_selection
-    search_keys = ["search_author_name", "search_title", "search_description", "ordering_filter"]
-    selected_keys = search_keys.select do |key|
-        !params["#{key}"].blank?
-    end
-    search_filters_hash = {}
-    selected_keys.each do |key|
-        search_filters_hash[key] = params["#{key}"]
-    end
-    search_filters_hash
-end
-
-def search_filter_chaining_method(search_filters_hash)
-    result = Book
-    search_filters_hash.each do |key, value|
-      key == "ordering_filter" ? result = result.send("#{value}") : result = result.send("#{key}", value)
-    end
-    result
-end
 
 end

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   resources :books do
     resources :reviews, only: [:index, :new, :create]
+    resources :checkouts, only: [:create]
   end
 
   get '/books/most_reviewed/:number', to: "books#most_reviewed"
@@ -23,6 +24,7 @@ Rails.application.routes.draw do
 
   resources :reviews, only: [:show, :edit, :update, :destroy]
 
-  post '/checkout', to: 'checkouts#create'
+  # # nested route books/:book_id/checkouts
+  # post '/checkouts/:id', to: 'checkouts#create'
 
 end
