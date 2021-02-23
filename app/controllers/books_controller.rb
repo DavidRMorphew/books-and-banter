@@ -4,16 +4,17 @@ class BooksController < ApplicationController
   before_action :redirect_if_not_admin, only: [:new, :create, :edit, :update, :destroy]
 
   def new
-    # only for admin and link visible in admin layout
     if params[:search]
       query_for_api = Book.format_query(params[:search])
-      if @google_books_instance = Api.fetch_books(query_for_api).compact.first
-        @google_books_instance
+      if Api.fetch_books(query_for_api)
+        @google_books_instance = Api.fetch_books(query_for_api).first
       else
         flash[:message] = "No search results. Please try again."
+        @book = Book.new
       end
+    else
+      @book = Book.new
     end
-    @book = Book.new
   end
 
   def create
