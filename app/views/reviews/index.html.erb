@@ -12,5 +12,8 @@
     </div><br>
 <% end %>
 
+<% if !user_reviewed_book_already?(@book) && !admin? %>
+<%= link_to "Review this Book", new_book_review_path(@book.id)  %><br>
+<% end %>
 <%# back_to_book_if_book method? %>
 <%= link_to "Back to Book", book_path(@book.id) if @book %>
