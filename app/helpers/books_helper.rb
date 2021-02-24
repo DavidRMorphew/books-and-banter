@@ -38,10 +38,16 @@ module BooksHelper
         # binding.pry
         if !book.currently_checked_out
             button_to "Check this book out of the library", book_checkouts_path(book.id)
-        elsif book.borrowers.last == current_user
+        elsif current_borrower(book) == current_user
             "Return Book button_to goes here"
         else
             tag.h4("This book is currently checked out.")
+        end
+    end
+
+    def current_borrower(book)
+        if book.currently_checked_out
+            book.borrowers.last
         end
     end
 end
