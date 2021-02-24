@@ -3,7 +3,8 @@ class CheckoutsController < ApplicationController
   
   def create
     # binding.pry
-    if book = Book.find_by(id: params[:book_id])
+    book = Book.find_by(id: params[:book_id])
+    if book && !book.currently_checked_out
       # binding.pry
       checkout = current_user.checkouts.create({
         borrowed_book: book,
@@ -13,6 +14,8 @@ class CheckoutsController < ApplicationController
       book.update(currently_checked_out: true)
       # binding.pry
       # book.change_checkout_status
+    else
+      flash[:message] = "You cannot check out this book"
     end
     redirect_to book_path(book)
   end

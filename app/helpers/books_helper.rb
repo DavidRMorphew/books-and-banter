@@ -47,13 +47,13 @@ module BooksHelper
 
     def current_borrower(book)
         if book.currently_checked_out
-            book.borrowers.last
+            current_checkout_record(book).borrower
         end
     end
 
     def current_checkout_record(book)
         if book.currently_checked_out
-            book.checkouts.last
+            book.checkouts.order(:created_at).last
         end
     end
 

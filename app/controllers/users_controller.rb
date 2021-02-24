@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   # add before_action for delete for admin_authorization?
   # add redirect_if_not_logged_in to show and check current_user
+  include BooksHelper
+
   def new
     @user = User.new
   end
@@ -18,7 +20,8 @@ class UsersController < ApplicationController
   def show
     redirect_if_not_logged_in
     @user = User.find_by(id: params[:id])
-    @books = @user.borrowed_books.currently_checked_out_books
+    # @books = @user.borrowed_books.select {|book| current_borrower(book) == current_user }
+    @books = @user.borrowed_books.currently_checked_out_books.select {|book| current_borrower(book) == current_user }
     @reviews = @user.reviews
     redirect_if_not_authorized_to_view(@user)
   end
