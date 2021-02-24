@@ -50,4 +50,10 @@ module BooksHelper
             book.borrowers.last
         end
     end
+
+    def current_checkout_record(book)
+        if book.currently_checked_out
+            book.checkouts.last
+        end
+    end
 end

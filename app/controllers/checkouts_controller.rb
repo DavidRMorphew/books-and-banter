@@ -15,5 +15,7 @@ class CheckoutsController < ApplicationController
 
   def update
     binding.pry
+    book = Book.find_by(id: params[:book_id])
+    checkout = Checkout.find_by(id: params[:id])
   end
 end
