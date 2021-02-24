@@ -58,6 +58,6 @@ module BooksHelper
     end
 
     def book_due_date(book)
-        current_checkout_record(book).due_date
+        current_checkout_record(book).due_date.strftime("%-m-%-d-%Y")
     end
 end
