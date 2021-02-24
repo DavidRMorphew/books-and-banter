@@ -4,19 +4,26 @@
     <%= link_to "Add a Book to the Library", new_book_path %><br>
 <% else %>
     <h2>Checked-Out Books</h2>
-            <% @user.borrowed_books.currently_checked_out_books.each do |book| %>
+        <% if @books.empty? %>
+            <strong>—No books currently checked out.</strong>
+        <% else %>
+            <% @books.each do |book| %>
                 <div><h4><%= link_to book.title, book_path(book.id) %></h4>
                     <%= render partial: 'books/author_description_display', locals: { book: book } %><br>
-                    <%= book_due_date(book) %></div>
-                    <%# use strftime for due date %>
+                    <%= book_due_date(book) %>
+                </div>
             <% end %>
-        <%# currently checked out and borrower = current_user %>
+        <% end %>
+
     <h2>My Book Reviews</h2>
-    <% @reviews.each do |review| %>
-        <div>
-        <%# create method to show username and reviewed_book_title %>
-            <h3><%= reviewer_username(review) %>'s Review of '<%= link_to reviewed_book_title(review), book_path(review.reviewed_book.id) %>'</h3>
-            <%= render partial: 'reviews/review_display', locals: { review: review }%>
-        </div>
-    <% end%>
+        <% if @reviews.empty? %>
+            <strong>—No reviews currently.</strong>
+        <% else %>
+            <% @reviews.each do |review| %>
+                <div>
+                    <h3><%= reviewer_username(review) %>'s Review of '<%= link_to reviewed_book_title(review), book_path(review.reviewed_book.id) %>'</h3>
+                    <%= render partial: 'reviews/review_display', locals: { review: review }%>
+                </div>
+            <% end %>
+        <% end %>
 <% end %>
