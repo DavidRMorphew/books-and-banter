@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :books do
     resources :reviews, only: [:index, :new, :create]
-    resources :checkouts, only: [:create]
+    resources :checkouts, only: [:create, :update]
   end
 
   get '/books/most_reviewed/:number', to: "books#most_reviewed"
