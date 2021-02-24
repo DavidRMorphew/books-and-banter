@@ -10,15 +10,15 @@ module BooksHelper
             search_filters_hash[key] = params["#{key}"]
         end
         search_filters_hash
-      end
-    
-      def search_filter_chaining_method(search_filters_hash)
+    end
+
+    def search_filter_chaining_method(search_filters_hash)
         result = Book
         search_filters_hash.each do |key, value|
           key == "ordering_filter" ? result = result.send("#{value}") : result = result.send("#{key}", value)
         end
         result
-      end
+    end
     
     def book_index_title_display
         if number = params[:number]

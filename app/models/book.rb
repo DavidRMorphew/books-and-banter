@@ -47,11 +47,9 @@ class Book < ApplicationRecord
         self.where(currently_checked_out: true).distinct
     end
     # Check on this or remove
-    def self.most_reviewed
-        # self.order(rating: :desc)
-        self.joins(:reviews).group(:reviewed_book_id).order(reviews: :desc)
-        # binding.pry
-    end
+    # def self.most_reviewed
+    #     self.sort_by {|book| book.reviews.count }
+    # end
 
     def aggregate_book_rating
         self.reviews.average(:rating)
