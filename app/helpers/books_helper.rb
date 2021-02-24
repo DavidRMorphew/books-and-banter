@@ -56,4 +56,8 @@ module BooksHelper
             book.checkouts.last
         end
     end
+
+    def book_due_date(book)
+        current_checkout_record(book).due_date
+    end
 end
