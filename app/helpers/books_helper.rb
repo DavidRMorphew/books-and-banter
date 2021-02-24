@@ -39,7 +39,7 @@ module BooksHelper
         if !book.currently_checked_out
             button_to "Check this book out of the library", book_checkouts_path(book.id)
         elsif current_borrower(book) == current_user
-            button_to "Return Book (DUE: #{book_due_date(book)})", book_checkout_path(book.id, current_checkout_record(book).id), method: :patch
+            button_to "Return Book (#{book_due_date(book)})", book_checkout_path(book.id, current_checkout_record(book).id), method: :patch
         else
             tag.h4("This book is currently checked out.")
         end
@@ -58,6 +58,6 @@ module BooksHelper
     end
 
     def book_due_date(book)
-        current_checkout_record(book).due_date.strftime("%-m-%-d-%Y")
+        "DUE: #{current_checkout_record(book).due_date.strftime("%-m-%-d-%Y")}"
     end
 end

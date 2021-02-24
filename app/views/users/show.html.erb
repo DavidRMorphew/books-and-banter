@@ -7,7 +7,7 @@
             <% @user.borrowed_books.currently_checked_out_books.each do |book| %>
                 <div><h4><%= link_to book.title, book_path(book.id) %></h4>
                     <%= render partial: 'books/author_description_display', locals: { book: book } %><br>
-                    DUE: <%= book_due_date(book) %></div>
+                    <%= book_due_date(book) %></div>
                     <%# use strftime for due date %>
             <% end %>
         <%# currently checked out and borrower = current_user %>
