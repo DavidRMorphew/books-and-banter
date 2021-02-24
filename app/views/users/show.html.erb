@@ -4,6 +4,13 @@
     <%= link_to "Add a Book to the Library", new_book_path %><br>
 <% else %>
     <h2>Checked-Out Books</h2>
+        <%# Book @books select current checkouts - all books where 
+            @user.books.each do |book|
+                <%# link_to book.title, book_path(book.id) %>
+                <%# <%= render partial: 'books/author_description_display', locals: { book: book } %> %>
+                <%# book.due_date %>
+            <%# end %>
+        <%# currently checked out and borrower = current_user %>
     <h2>My Book Reviews</h2>
     <% @reviews.each do |review| %>
         <div>

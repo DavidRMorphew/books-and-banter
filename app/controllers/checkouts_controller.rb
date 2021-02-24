@@ -1,7 +1,6 @@
 class CheckoutsController < ApplicationController
   include BooksHelper
-  # ask about using this
-
+  
   def create
     # binding.pry
     if book = Book.find_by(id: params[:book_id])
@@ -12,14 +11,14 @@ class CheckoutsController < ApplicationController
         due_date: Time.now + 2.week,
       })
       book.update(currently_checked_out: true)
-      binding.pry
+      # binding.pry
       # book.change_checkout_status
     end
     redirect_to book_path(book)
   end
 
   def update
-    binding.pry
+    # binding.pry
     book = Book.find_by(id: params[:book_id])
     checkout = Checkout.find_by(id: params[:id])
     if current_borrower(book) == current_user

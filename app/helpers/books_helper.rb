@@ -45,7 +45,6 @@ module BooksHelper
         end
     end
 
-    # these go here?
     def current_borrower(book)
         if book.currently_checked_out
             book.borrowers.last
