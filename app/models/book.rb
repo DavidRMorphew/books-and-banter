@@ -44,7 +44,7 @@ class Book < ApplicationRecord
     end
 
     def self.currently_checked_out_books
-        self.where(currently_checked_out: true)
+        self.where(currently_checked_out: true).distinct
     end
     # Check on this or remove
     def self.most_reviewed
