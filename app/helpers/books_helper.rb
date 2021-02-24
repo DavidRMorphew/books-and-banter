@@ -39,12 +39,13 @@ module BooksHelper
         if !book.currently_checked_out
             button_to "Check this book out of the library", book_checkouts_path(book.id)
         elsif current_borrower(book) == current_user
-            button_to "Return Book", book_checkout_path(book.id), method: :patch
+            button_to "Return Book", book_checkout_path(book.id, current_checkout_record(book).id), method: :patch
         else
             tag.h4("This book is currently checked out.")
         end
     end
 
+    # these go here?
     def current_borrower(book)
         if book.currently_checked_out
             book.borrowers.last
