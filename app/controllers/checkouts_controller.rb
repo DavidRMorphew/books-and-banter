@@ -25,6 +25,7 @@ class CheckoutsController < ApplicationController
     if current_borrower(book) == current_user
       checkout.update(due_date: nil)
       book.update(currently_checked_out: false)
+      redirect_to book_path(book)
     else
       flash[:message] = "You cannot check in that book"
     end
