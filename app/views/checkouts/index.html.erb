@@ -4,7 +4,7 @@
         Date Checked Out: <%= checkout.checkout_date.strftime("%-m-%-d-%Y") %><br>
         Checked in? <%= checkout.checked_in %>
         <% if admin? %>
-            Borrower: <%= borrower_username(checkout) %><br>
+            <br>Borrower: <%= borrower_username(checkout) %><br>
         <% end %>
     </div>
 <% end %>
