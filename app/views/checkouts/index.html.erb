@@ -3,7 +3,7 @@
     <div><h3><%= borrowed_book_title(checkout) %></h3>
         Date Checked Out: <%= format_date(checkout.checkout_date) %><br>
         
-        Checked in? <%= checkout.checked_in %>
+        Status: <%= display_checked_out_status(checkout) %>
         <% if admin? %>
             <br>Borrower: <%= borrower_username(checkout) %><br>
         <% end %>

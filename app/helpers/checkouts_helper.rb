@@ -7,5 +7,12 @@ module CheckoutsHelper
         checkout.borrower.username
     end
 
-    # display checked out status
+    # make book due red font in checkout index
+    def display_checked_out_status(checkout)
+        if checkout.checked_in
+            "BOOK RETURNED"
+        else
+            "BOOK DUE #{format_date(checkout.due_date)}"
+        end
+    end
 end
