@@ -1,1 +1,4 @@
 <h1>Checkout History</h1>
+<% @checkhouts.each do |checkout| %>
+    <%= borrowed_book_title(checkout) %>
+<% end %>
