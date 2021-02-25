@@ -1,13 +1,8 @@
 <%= review_show_page_title %>
 <h4><%= @review.title %></h4>
-<p><%= @review.content %></p>
-<p><%= rating_display(@review) %></p>
-<p><%= recommend_display(@review) %></p>
-<p><%= kid_friendly_display(@review) %></p>
-
+<%= render partial: 'review_display', locals: { review: @review } %>
+    <br>
 <%= link_to "Edit this Review", edit_review_path(@review.id) if authorized_to_edit_review?(@review) %><br>
-<%# Link to All Reviews of this book %>
-<%# link to all my reviews? %>
 
 <%= form_tag("/reviews/#{@review.id}", method: "delete") do %>
     <%= submit_tag "Delete this Review" %>

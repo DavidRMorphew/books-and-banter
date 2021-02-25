@@ -23,6 +23,7 @@
             <% @reviews.each do |review| %>
                 <div>
                     <h3><%= reviewer_username(review) %>'s Review of '<%= link_to reviewed_book_title(review), book_path(review.reviewed_book.id) %>'</h3>
+                    <strong><%= link_to review.title, review_path(review.id) %></strong><br>
                     <%= render partial: 'reviews/review_display', locals: { review: review }%>
                 </div>
             <% end %>
