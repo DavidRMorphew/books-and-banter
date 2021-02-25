@@ -7,17 +7,27 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   </head>
 
   <body>
+  <nav>
+  <ul>
   <% if logged_in? %>
-    <%= link_to "Our Library's Books", books_path %><br>
-    <%= link_to "My Account Page", user_path(current_user) %><br>
-    <%= link_to "Log Out", '/logout', method: 'delete' %>
+    <li><%= link_to "Our Library's Books", books_path %></li>
+    <li><%= link_to "My Account Page", user_path(current_user) %></li>
+    <li><%= link_to "Log Out", '/logout', method: 'delete' %></li>
   <% else %>
-    <%= button_to "Log In With Google", '/auth/google_oauth2' %>
+    <li><%= button_to "Log In With Google", '/auth/google_oauth2' %></li>
   <% end %>
-  
+  </ul>
+  </nav>
+
   <% if flash[:message] %>
     <div class="field_with_errors"><h2><%= flash[:message] %></h2></div>
   <% end %>
