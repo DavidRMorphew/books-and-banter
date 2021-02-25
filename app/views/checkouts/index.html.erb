@@ -1,7 +1,9 @@
 <h1>Checkout History</h1>
 <% @checkouts.each do |checkout| %>
     <div><h3><%= borrowed_book_title(checkout) %></h3>
-        Date Checked Out: <%= checkout.checkout_date %><br>
-        Original Due Date: <%= checkout.due_date %>
+        Date Checked Out: <%= checkout.checkout_date.strftime("%-m-%-d-%Y") %><br>
+        <% if admin? %>
+            Borrower: <%= borrower_username(checkout) %>
+        <% end %>
     </div>
 <% end %>

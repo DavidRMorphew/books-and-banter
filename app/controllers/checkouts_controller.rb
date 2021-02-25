@@ -22,7 +22,7 @@ class CheckoutsController < ApplicationController
 
   def index
     if admin?
-      @checkouts = Checkout.all(created_at: :desc)
+      @checkouts = Checkout.order(:borrower, created_at: :desc)
     else
       @checkouts = current_user.checkouts.order(created_at: :desc)
     end
