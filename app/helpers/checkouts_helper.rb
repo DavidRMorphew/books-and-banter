@@ -6,4 +6,6 @@ module CheckoutsHelper
     def borrower_username(checkout)
         checkout.borrower.username
     end
+
+    # display checked out status
 end

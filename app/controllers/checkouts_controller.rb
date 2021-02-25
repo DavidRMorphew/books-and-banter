@@ -1,5 +1,6 @@
 class CheckoutsController < ApplicationController
   include BooksHelper
+  before_action :redirect_if_not_logged_in
   
   def create
     # binding.pry
