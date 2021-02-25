@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   resources :books do
     resources :reviews, only: [:index, :new, :create]
-    resources :checkouts, only: [:create, :update, :index]
+    resources :checkouts, only: [:create, :update]
   end
 
   resources :checkouts, only: [:index]
