@@ -3,7 +3,7 @@
     <div><h3><%= borrowed_book_title(checkout) %></h3>
         Date Checked Out: <%= checkout.checkout_date.strftime("%-m-%-d-%Y") %><br>
         <% if admin? %>
-            Borrower: <%= borrower_username(checkout) %>
+            Borrower: <%= borrower_username(checkout) %><br>
         <% end %>
     </div>
 <% end %>

@@ -9,7 +9,7 @@ class CheckoutsController < ApplicationController
       checkout = current_user.checkouts.create({
         borrowed_book: book,
         checkout_date: Time.now,
-        due_date: Time.now + 2.week,
+        due_date: Time.now + 2.week
       })
       book.update(currently_checked_out: true)
       # binding.pry
@@ -22,7 +22,7 @@ class CheckoutsController < ApplicationController
 
   def index
     if admin?
-      @checkouts = Checkout.order(:borrower, created_at: :desc)
+      @checkouts = Checkout.all
     else
       @checkouts = current_user.checkouts.order(created_at: :desc)
     end
@@ -33,7 +33,7 @@ class CheckoutsController < ApplicationController
     book = Book.find_by(id: params[:book_id])
     checkout = Checkout.find_by(id: params[:id])
     if current_borrower(book) == current_user
-      checkout.update(due_date: nil)
+      checkout.update(checked_in: true)
       book.update(currently_checked_out: false)
       redirect_to book_path(book)
     else
