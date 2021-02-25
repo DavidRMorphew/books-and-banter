@@ -34,28 +34,9 @@ class BooksController < ApplicationController
   end
 
   def index
-    # helper called search_keys_selection
-    # search_keys = ["search_author_name", "search_title", "most_recently_added", "most_recently_published", "ordered_by_aggregate_ratings"]
-    # selected_keys = search_keys.select do |key|
-    #   params["#{key}"]
-    # end
-    # search_hash = {}
-    # selected_keys.each do |key|
-    #   search_hash[key] = params["#{key}"]
-    # end
-    # here
-    # binding.pry
     if !search_keys_selection.empty?
       search_results = search_filter_chaining_method(search_keys_selection)
       if !search_results.empty?
-
-   
-    # if !selected_keys.empty?
-    #   result = Book
-    #   search_hash.each do |method_name, value|
-    #     value == "1" ? result = result.send("#{method_name}") : result = result.send("#{method_name}", value)
-    #   end
-    #   if !result.empty?
         @books = search_results
       else
         flash[:message] = "No results found for those criteria."
@@ -67,7 +48,6 @@ class BooksController < ApplicationController
   end
 
   def show
-    # access only if not_checked_out || current_users borrowed book
     @book = Book.find_by(id: params[:id])
   end
 
@@ -95,11 +75,6 @@ class BooksController < ApplicationController
     redirect_to books_path
   end
 
-  def most_reviewed
-    @books = Book.most_reviewed.limit(params[:number])
-    render :index
-  end
-
   # add class method of highest_rated with action here and route: books/highest_rated - need method in Book to define it with scope
 
   # add query method for searching through library - author, rating, categories, title (name_like)
@@ -109,5 +84,4 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:authors, :isbn, :title, :description, :publisher, :publication_date, :categories)
   end
-
 end

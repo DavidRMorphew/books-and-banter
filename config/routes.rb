@@ -16,8 +16,6 @@ Rails.application.routes.draw do
     resources :checkouts, only: [:create, :update]
   end
 
-  get '/books/most_reviewed/:number', to: "books#most_reviewed"
-  
   scope '/admin' do
     resources :reviews, only: [:index]
   end
