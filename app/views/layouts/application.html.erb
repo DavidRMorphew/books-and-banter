@@ -16,25 +16,34 @@
   </head>
 
   <body>
-  <nav class="indigo darken-4">
-  <ul>
-  <% if logged_in? %>
-    <li><%= link_to "Our Library's Books", books_path %></li>
-    <li><%= link_to "My Account Page", user_path(current_user) %></li>
-    <li><%= link_to "Log Out", '/logout', method: 'delete' %></li>
-  <% else %>
-    <li><%= button_to "Log In With Google", '/auth/google_oauth2' %></li>
-  <% end %>
-  </ul>
-  </nav>
+    <nav class="indigo darken-4">
+      <div class="container">
+        <ul>
+          <% if logged_in? %>
+            <li><%= link_to "Our Library's Books", books_path %></li>
+            <li><%= link_to "My Account Page", user_path(current_user) %></li>
+            <li><%= link_to "Log Out", '/logout', method: 'delete' %></li>
+          <% else %>
+            <li><%= button_to "Log In With Google", '/auth/google_oauth2' %></li>
+          <% end %>
+        
+          <div class="right">
+            <% if logged_in? %>
+              <li>You are logged in as "<%= current_user.username %>."</li>
+            <% end %>
+          </div>
+        </ul>
+      </div>
+    </nav>
 
-  <% if flash[:message] %>
-    <div id="error_explanation"><h2><%= flash[:message] %></h2></div>
-  <% end %>
+    <div class="container">
+      <% if flash[:message] %>
+        <div id="error_explanation"><h2><%= flash[:message] %></h2></div>
+      <% end %>
 
-    <%= yield %>
-  <% if logged_in? %>
-    <h4>You are logged in as "<%= current_user.username %>."</h4>
-  <% end %>
+      <%= yield %>
+        
+    </div>
   </body>
+  
 </html>
