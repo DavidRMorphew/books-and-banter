@@ -1,32 +1,44 @@
-<h1><%= @user.username %></h1>
-<% if admin? %>
-    <%= link_to "All Reviews", "/admin/reviews" %><br>
-    <%= link_to "Checkouts History for all Users", checkouts_path %><br>
-    <%= link_to "Add a Book to the Library", new_book_path %><br>
-<% else %>
-    <h2>Checked-Out Books</h2>
-        <% if @books.empty? %>
-            <strong>—No books currently checked out.</strong>
-        <% else %>
-            <% @books.each do |book| %>
-                <div><h4><%= link_to book.title, book_path(book.id) %></h4>
-                    <%= render partial: 'books/author_description_display', locals: { book: book } %><br>
-                    <%= book_due_date(book) %>
-                </div>
-            <% end %>
-        <% end %>
+<h2 class="center"><%= @user.username %></h2>
 
-    <h2>My Book Reviews</h2>
-        <% if @reviews.empty? %>
-            <strong>—No reviews currently.</strong>
-        <% else %>
-            <% @reviews.each do |review| %>
-                <div>
-                    <h3><%= reviewer_username(review) %>'s Review of '<%= link_to reviewed_book_title(review), book_path(review.reviewed_book.id) %>'</h3>
-                    <strong><%= link_to review.title, review_path(review.id) %></strong><br>
-                    <%= render partial: 'reviews/review_display', locals: { review: review }%>
-                </div>
+<h5 class="center"><%= @user.email %></h5>
+
+<% if admin? %>
+    <div class="container">
+        <%= link_to "All Reviews", "/admin/reviews" %><br>
+        <%= link_to "Checkouts History for all Users", checkouts_path %><br>
+        <%= link_to "Add a Book to the Library", new_book_path %><br>
+    </div>
+<% else %>
+
+    <h4><%= link_to "Checkouts History", checkouts_path %></h4>
+    
+    <h4>Checked-Out Books</h4>
+        <div class="container">
+            <% if @books.empty? %>
+                <strong>—No books currently checked out.</strong>
+            <% else %>
+                <% @books.each do |book| %>
+                    <div><h5><%= link_to book.title, book_path(book.id) %></h5>
+                        <%= render partial: 'books/author_description_display', locals: { book: book } %><br>
+                        <%= book_due_date(book) %>
+                    </div>
+                <% end %>
             <% end %>
-        <% end %>
-    <h2><%= link_to "Checkouts History", checkouts_path %></h2>
+        </div>
+    
+    <h4>My Book Reviews</h4>
+        <div class="container">
+            <% if @reviews.empty? %>
+                <strong>—No reviews currently.</strong>
+            <% else %>
+                <% @reviews.each do |review| %>
+                    <div>
+                        <h5><%= reviewer_username(review) %>'s Review of '<%= link_to reviewed_book_title(review), book_path(review.reviewed_book.id) %>'</h5>
+                        <h6><%= link_to review.title, review_path(review.id) %></h6>
+                        <%= render partial: 'reviews/review_display', locals: { review: review }%>
+                    </div>
+                <% end %>
+            <% end %>
+        </div>
+    
 <% end %>
