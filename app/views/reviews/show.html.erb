@@ -1,7 +1,7 @@
 <%= review_title %>
 <h4><%= @review.title %></h4>
 <p><%= @review.content %></p>
-<p>Rating <%= @review.rating %> / 10</p>
+<p><%= rating_display(@review) %></p>
 <p><%= recommend_display(@review) %></p>
 <p><%= kid_friendly_display(@review) %></p>
 

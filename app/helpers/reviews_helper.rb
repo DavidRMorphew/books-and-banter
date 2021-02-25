@@ -19,6 +19,10 @@ module ReviewsHelper
         end
     end
 
+    def rating_display(review)
+        "Rating: #{review.rating} / 10"
+    end
+
     def recommend_display(review)
         "Recommended? " + display_boolean_yes_no(review.recommend)
     end
