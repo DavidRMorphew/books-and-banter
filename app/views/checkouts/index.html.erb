@@ -1,11 +1,14 @@
 <h1>Checkout History</h1>
-<% @checkouts.each do |checkout| %>
-    <div><h3><%= borrowed_book_title(checkout) %></h3>
-        Date Checked Out: <%= format_date(checkout.checkout_date) %><br>
-        
-        Status: <%= display_checked_out_status(checkout) %>
-        <% if admin? %>
-            <br>Borrower: <%= borrower_username(checkout) %><br>
-        <% end %>
-    </div>
+<% if @checkouts.empty? %>
+            <strong>—No checkouts on file.</strong>
+<% else %>
+    <% @checkouts.each do |checkout| %>
+        <div><h3><%= borrowed_book_title(checkout) %></h3>
+            Date Checked Out: <%= format_date(checkout.checkout_date) %><br>
+            Status: <%= display_checked_out_status(checkout) %>
+            <% if admin? %>
+                <br>Borrower: <%= borrower_username(checkout) %><br>
+            <% end %>
+        </div>
+    <% end %>
 <% end %>
