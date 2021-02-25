@@ -3,7 +3,7 @@ module ReviewsHelper
         boolean ? "Yes" : "No"
     end
 
-    def review_show_page_title
+    def review_page_title
         if params[:book_id]
             tag.h1("'#{@book.title},' reviewed by #{current_user.username}")
         else
