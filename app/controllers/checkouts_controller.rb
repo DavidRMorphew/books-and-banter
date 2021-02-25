@@ -20,6 +20,12 @@ class CheckoutsController < ApplicationController
     redirect_to book_path(book)
   end
 
+  def index
+    if params[:user_id]
+      @checkouts = current_user.checkouts.order(created_at: :desc)
+    end
+  end
+
   def update
     # binding.pry
     book = Book.find_by(id: params[:book_id])

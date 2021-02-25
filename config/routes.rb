@@ -14,8 +14,10 @@ Rails.application.routes.draw do
 
   resources :books do
     resources :reviews, only: [:index, :new, :create]
-    resources :checkouts, only: [:create, :update]
+    resources :checkouts, only: [:create, :update, :index]
   end
+
+  resources :checkouts, only: [:index]
 
   scope '/admin' do
     resources :reviews, only: [:index]
