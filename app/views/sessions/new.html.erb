@@ -1,7 +1,9 @@
 <h1>Log In To See Books and Write Reviews!</h1>
 
-<h3>If you don't already have an account, please <%= link_to "Sign Up", signup_path %>.</h3>
+<h3>If you don't already have an account, please <%= link_to "Sign Up", signup_path %></h3>
+<h3>If you have a Google account, you can login using the button above.</h3>
 
+<h2>Login Credentials:</h2>
 <%= form_with(url: '/login', local: true) do |f| %>
     <%= f.label :email %><br>
     <%= f.email_field :email %><br><br>
