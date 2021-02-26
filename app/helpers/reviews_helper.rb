@@ -5,9 +5,9 @@ module ReviewsHelper
 
     def review_page_title
         if params[:book_id]
-            tag.h1("'#{@book.title},' reviewed by #{current_user.username}")
+            tag.h3("'#{@book.title},' reviewed by #{current_user.username}")
         else
-            tag.h1("'#{@book.title},' reviewed by #{@review.reviewer.username}")
+            tag.h3("'#{@book.title},' reviewed by #{@review.reviewer.username}")
         end
     end
 

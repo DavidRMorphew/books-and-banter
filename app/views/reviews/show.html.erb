@@ -1,11 +1,15 @@
+<div class="container">
+<br>
 <%= review_page_title %>
-<h4><%= @review.title %></h4>
+<h4 class="indigo-text text-lighten-1"><%= @review.title %></h4>
 <%= render partial: 'review_display', locals: { review: @review } %>
     <br>
-<%= link_to "Edit this Review", edit_review_path(@review.id) if authorized_to_edit_review?(@review) %><br>
+<h5><%= link_to "Edit this Review", edit_review_path(@review.id) if authorized_to_edit_review?(@review) %></h5>
 
 <%= form_tag("/reviews/#{@review.id}", method: "delete") do %>
-    <%= submit_tag "Delete this Review" %>
+    <%= submit_tag "Delete this Review", class:"btn indigo darken-4" %>
 <% end if authorized_to_destroy_review?(@review) %>
 
-<%= link_to "See All Reviews of This Book", book_reviews_path(@book.id) %>
+<h5><%= link_to "See All Reviews of This Book", book_reviews_path(@book.id) %></h5>
+<br>
+</div>
