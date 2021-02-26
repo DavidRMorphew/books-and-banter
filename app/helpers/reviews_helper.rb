@@ -20,15 +20,15 @@ module ReviewsHelper
     end
 
     def rating_display(review)
-        "Rating: #{review.rating} / 10"
+        tag.span("Rating: ", class: "indigo-text text-lighten-2") + "#{review.rating} / 10"
     end
 
     def recommend_display(review)
-        "Recommended? " + display_boolean_yes_no(review.recommend)
+        tag.span("Recommended? ", class: "indigo-text text-lighten-2") + display_boolean_yes_no(review.recommend)
     end
     
     def kid_friendly_display(review)
-        "Kid Friendly? " + display_boolean_yes_no(review.kid_friendly)
+        tag.span("Kid Friendly? ", class: "indigo-text text-lighten-2") + display_boolean_yes_no(review.kid_friendly)
     end
 
     def reviewer_username(review)

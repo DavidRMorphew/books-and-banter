@@ -4,22 +4,21 @@
     <h2 class="center"><%= @book.title %></h2>
         <br>
     <h4 class="center yellow-text text-darken-3"><%= display_aggregate_book_rating(@book) %></h4>
-    <h4 class="indigo-text text-lighten-1">Author(s):</h4>
+    <h4 class="cyan-text text-darken-3">Author(s):</h4>
         <h5><%= @book.display_authors %></h5>
-    <h4 class="indigo-text text-lighten-1">Description:</h4>
+    <h4 class="cyan-text text-darken-3">Description:</h4>
         <h5><%= @book.display_description %></h5>
-    <h4 class="indigo-text text-lighten-1">Publisher:</h4>
+    <h4 class="cyan-text text-darken-3">Publisher:</h4>
         <h5><%= @book.publisher %></h5>
-    <h4 class="indigo-text text-lighten-1">Publication Date:</h4>
+    <h4 class="cyan-text text-darken-3">Publication Date:</h4>
         <h5><%= @book.publication_date %></h5>
-    <h4 class="indigo-text text-lighten-1">Categories:</h4>
+    <h4 class="cyan-text text-darken-3">Categories:</h4>
         <h5><%= @book.categories %></h5><br>
 
     <% if admin? %>
         <h5><%= link_to "Edit this Book", edit_book_path(@book.id) %></h5>
         <h5><%= link_to "Remove this Book from the Library", book_path(@book.id), method: "delete" %></h5>
     <% else  %>
-    <%# logic  for checked out and available for checkout %>
         <%= checkout_button_or_checked_out_status_display(@book) %>
         <h5><%= link_to "Review this Book", new_book_review_path(@book.id) unless user_reviewed_book_already?(@book) %></h5>
     <% end %>

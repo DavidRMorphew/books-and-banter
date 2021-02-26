@@ -32,7 +32,7 @@ main {
     flex: 1 0 auto;
   }
 
-#text_container { background-color: rgba(0,0,0,0.82); }
+#text_container { background-color: rgba(0,0,0,0.85); }
 
 [type="radio"]:not(:checked), [type="radio"]:checked {
     position: relative; 

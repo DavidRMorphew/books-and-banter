@@ -26,7 +26,6 @@ class CheckoutsController < ApplicationController
   end
 
   def update
-    # binding.pry
     book = Book.find_by(id: params[:book_id])
     checkout = Checkout.find_by(id: params[:id])
     if current_borrower(book) == current_user
