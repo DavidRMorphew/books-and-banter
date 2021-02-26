@@ -24,11 +24,14 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
   }
 
 main {
     flex: 1 0 auto;
   }
+
+#text_container { background-color: rgba(0,0,0,0.7); }
 
 [type="radio"]:not(:checked), [type="radio"]:checked {
     position: relative; 
@@ -46,5 +49,4 @@ main {
   opacity: 1;
   pointer-events: auto;
 }
-
 
