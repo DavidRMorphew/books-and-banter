@@ -30,9 +30,21 @@ main {
     flex: 1 0 auto;
   }
 
-  [type="radio"]:not(:checked), [type="radio"]:checked {
+[type="radio"]:not(:checked), [type="radio"]:checked {
     position: relative; 
     opacity: 1; 
+}
+
+/* [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+  position: static;
+  left: 0px; 
+  opacity: 1; 
+} */
+
+[type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+  position: absolute;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 

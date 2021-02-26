@@ -7,9 +7,10 @@
     <%= f.text_area :content %><br>
     <%= f.label :rating %> (1–10)<br>
     <%= f.number_field :rating, in: 1..10 %><br>
-    <%= f.label :recommend %>?
+
+    <%= f.label :recommend %>
     <%= f.check_box :recommend %><br>
-    <%= f.label :kid_friendly %>?
-    <%= f.check_box :kid_friendly %><br>
+    <%= f.label :kid_friendly %>
+    <%= f.check_box :kid_friendly, for: :kid_friendly %> <br>
     <%= f.submit %>
 
