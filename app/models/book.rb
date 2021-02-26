@@ -6,17 +6,29 @@ class Book < ApplicationRecord
     validates :authors, :title, :description, :publisher, :publication_date, :categories, :isbn, presence: true
     validates :title, uniqueness: { scope: :authors, message: "with the same author is already in our libray" }
     validate :publication_date_year_valid, if: :publication_date
-    validate :isbn_numbers_and_comma_only, if: :isbn
+    validate :isbn_conventions, if: :isbn
+
+    def publication_date_year_valid
+        if !self.publication_date.to_i || self.publication_date.length != 4
+            self.errors.add(:publication_date, "must be formatted as a four-digit number")
+        elsif self.publication_date.to_i > Time.now.year
+            self.errors.add(:publication_date, "cannot be in the future")
+        end
+    end
+
+    def isbn_conventions
+        if !self.isbn.split(", ").all? {|isbn| isbn.match(/(\A\d{9}[X]\z|\A\d{10}\z|\A\d{13}\z)/) }
+            self.errors.add(:isbn, "must comply with isbn conventions")
+        end
+    end
 
     def self.format_query(queries)
         submitted_queries = queries.reject { |k,v| v.empty? }
-
         submitted_queries[:title] = "intitle:#{submitted_queries[:title]}" if submitted_queries[:title]
         submitted_queries[:author] = "inauthor:#{submitted_queries[:author]}" if submitted_queries[:author]
         submitted_queries[:category] = "subject:#{submitted_queries[:category]}" if submitted_queries[:category]
         submitted_queries[:isbn] = "isbn:#{submitted_queries[:isbn]}" if submitted_queries[:isbn]
-        # binding.pry
-        formatted_search_query = submitted_queries.values.join("+") #<< "&maxResults=1"
+        formatted_search_query = submitted_queries.values.join("+")
     end
 
     def display_description
@@ -36,27 +48,9 @@ class Book < ApplicationRecord
         end
     end
 
-    def publication_date_year_valid
-        if !self.publication_date.to_i || self.publication_date.length != 4
-            self.errors.add(:publication_date, "must be formatted as a four-digit number")
-        elsif self.publication_date.to_i > Time.now.year
-            self.errors.add(:publication_date, "cannot be in the future")
-        end
-    end
-
-    def isbn_numbers_and_comma_only
-        if !self.isbn.split(", ").all? {|isbn| isbn.match(/(\A\d{9}[X]\z|\A\d{10}\z|\A\d{13}\z)/) }
-            self.errors.add(:isbn, "must comply with isbn conventions")
-        end
-    end
-
     def self.currently_checked_out_books
         self.where(currently_checked_out: true).distinct
     end
-    # Check on this or remove
-    # def self.most_reviewed
-    #     self.sort_by {|book| book.reviews.count }
-    # end
 
     def aggregate_book_rating
         self.reviews.average(:rating)

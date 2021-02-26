@@ -1,7 +1,7 @@
 class Review < ApplicationRecord
     belongs_to :reviewer, class_name: "User"
     belongs_to :reviewed_book, class_name: "Book"
-    validates :title, :content, :rating, presence: true
+    validates :title, :content, :rating, :reviewer, :reviewed_book, presence: true
     validates :rating, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 10 }
     validate :appropriate_language
     
