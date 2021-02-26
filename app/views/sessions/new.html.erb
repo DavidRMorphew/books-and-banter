@@ -1,9 +1,10 @@
-<h1>Log In To See Books and Write Reviews!</h1>
+<div class="container">
+<h2 class="center">Log In To See Books and Write Reviews!</h2>
 
-<h3>If you don't already have an account, please <%= link_to "Sign Up", signup_path %></h3>
-<h3>If you have a Google account, you can login using the button above.</h3>
+<h5>If you don't already have an account, please <%= link_to "Sign Up", signup_path %></h5>
+<h5>If you have a Google account, you can login using the button above.</h5>
 
-<h2>Login Credentials:</h2>
+<h4>Login Credentials:</h4>
 <%= form_with(url: '/login', local: true) do |f| %>
     <%= f.label :email %><br>
     <%= f.email_field :email %><br><br>
@@ -12,3 +13,5 @@
 
     <%= f.submit "Log In", class:"btn indigo darken-4"%>
 <% end %>
+
+</div>
