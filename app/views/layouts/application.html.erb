@@ -26,7 +26,6 @@
           <% else %>
             <li><%= button_to "Log In With Google", '/auth/google_oauth2' %></li>
           <% end %>
-        
           <div class="right">
             <% if logged_in? %>
               <li>You are logged in as "<%= current_user.username %>."</li>
@@ -43,7 +42,15 @@
 
       <%= yield %>
         
+        <br>
     </div>
+        <footer class="page-footer indigo darken-4">
+          <div class="container">
+            <% if logged_in? %>
+              <strong>Books & Banter 2021</strong>
+            <% end %>
+          </div>
+        </footer>
   </body>
   
 </html>

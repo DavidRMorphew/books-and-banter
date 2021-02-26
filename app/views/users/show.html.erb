@@ -10,23 +10,23 @@
     </div>
 <% else %>
 
-    <h4><%= link_to "Checkouts History", checkouts_path %></h4>
+    <h4 class="center"><%= link_to "Checkouts History", checkouts_path %></h4>
     
-    <h4>Checked-Out Books</h4>
+    <h4 class="center">Checked-Out Books</h4>
         <div class="container">
             <% if @books.empty? %>
                 <strong>—No books currently checked out.</strong>
             <% else %>
                 <% @books.each do |book| %>
                     <div><h5><%= link_to book.title, book_path(book.id) %></h5>
-                        <%= render partial: 'books/author_description_display', locals: { book: book } %><br>
-                        <%= book_due_date(book) %>
+                        <%= render partial: 'books/author_description_display', locals: { book: book } %>
+                        <strong><%= book_due_date(book) %></strong>
                     </div>
                 <% end %>
             <% end %>
         </div>
     
-    <h4>My Book Reviews</h4>
+    <h4 class="center">My Book Reviews</h4>
         <div class="container">
             <% if @reviews.empty? %>
                 <strong>—No reviews currently.</strong>
