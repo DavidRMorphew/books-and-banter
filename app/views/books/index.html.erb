@@ -1,32 +1,36 @@
-<%= book_index_title_display %>
-<h4>Click on any title to see more information, check out the book, or write a review.</h4>
+<div class="center">
+    <%= book_index_title_display %>
+    <h5>Click on any title to see more information, check out the book, or write a review.</h5>
+</div>
+    <br>
+<div class="container cyan-text text-darken-3">
+    <h4 class= "center">Order and Filter Results:</h4>
+    <%= form_tag books_path, method: :get do %>
+        <h5>Search:</h5>
+            <div class="container">
+                by Author: <%= text_field_tag :search_author_name %><br>
+                by Title: <%= text_field_tag :search_title %><br>
+                by Description: <%= text_field_tag :search_description %><br>
+            </div>
+        <h5>Order:</h5>
+            <div class="container"><h5>
+                <label for="ordering_filter_most_recently_added">by Most Recently Added<%= radio_button_tag :ordering_filter, :most_recently_added%></label><br>
+                <label for="ordering_filter_most_recently_published">by Most Recently Published<%= radio_button_tag :ordering_filter, :most_recently_published%></label><br>  
+                <label for="ordering_filter_ordered_by_aggregate_ratings">by Highest Rated<%= radio_button_tag :ordering_filter, :ordered_by_aggregate_ratings %></label><br>
+            </div></h5>
+        <%= submit_tag "Filter", class:"btn cyan darken-3" %>
+    <% end %>
+    <br>
 
-<h3>Order and Filter Results:</h3>
-<%= form_tag books_path, method: :get do %>
-    <strong>Search:</strong><br>
-        by Author: <%= text_field_tag :search_author_name %><br>
-        by Title: <%= text_field_tag :search_title %><br>
-        by the Description: <%= text_field_tag :search_description %><br>
-    <strong>Order:</strong><br> 
-        <%# by Most Recently Added <%= check_box_tag :most_recently_added %>
-        <%# by Most Recently Published <%= check_box_tag :most_recently_published %>
-        <%# by Highest Rated <%= check_box_tag :ordered_by_aggregate_ratings %>
-        <label for="ordering_filter_most_recently_added">by Most Recently Added<%= radio_button_tag :ordering_filter, :most_recently_added%></label><br>
-        <label for="ordering_filter_most_recently_published">by Most Recently Published<%= radio_button_tag :ordering_filter, :most_recently_published%></label><br>  
-        <label for="ordering_filter_ordered_by_aggregate_ratings">by Highest Rated<%= radio_button_tag :ordering_filter, :ordered_by_aggregate_ratings %></label><br> 
-    <%= submit_tag "Filter", class:"btn indigo darken-4" %>
-<% end %>
-<ul>
     <% if admin? %>
         <div><h2><%= link_to "Add a New Book", new_book_path %></h2></div>
     <% end %>
+</div>
 
-<%# extract to partial? %>
 <% @books.each do |book| %>
-    <div><h2><%= link_to book.title, book_path(book.id) %></h2>
-
-    <%= render partial: 'author_description_display', locals: { book: book } %>
-
+    <div class="container">
+        <h5><%= link_to book.title, book_path(book.id) %></h5>
+    
+        <%= render partial: 'author_description_display', locals: { book: book } %>
     </div>
 <% end %>  
-</ul>

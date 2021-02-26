@@ -27,7 +27,7 @@
             <li><%= link_to "My Account Page", user_path(current_user) %></li>
             <li><%= link_to "Log Out", '/logout', method: 'delete' %></li>
           <% else %>
-            <li><%= button_to "Log In With Google", '/auth/google_oauth2' %></li>
+            <li><%= button_to "Log In With Google", '/auth/google_oauth2', class:"btn cyan darken-3" %></li>
           <% end %>
           <div class="right">
             <% if logged_in? %>
