@@ -1,4 +1,6 @@
-<h2>Add a New Review:</h2>
+<div class="container">
+<br>
+<h2>Add a New Review</h2>
 <%= review_page_title %>
 
 <%= render partial: 'shared/error_display', locals: { object: @review }%>
@@ -6,3 +8,4 @@
 <%= form_for @review, url: book_reviews_path do |f| %>
     <%= render partial: 'form', locals: { f: f } %>
 <% end %>
+</div>
