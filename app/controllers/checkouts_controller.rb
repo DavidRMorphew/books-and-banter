@@ -3,18 +3,14 @@ class CheckoutsController < ApplicationController
   before_action :redirect_if_not_logged_in
   
   def create
-    # binding.pry
     book = Book.find_by(id: params[:book_id])
     if book && !book.currently_checked_out
-      # binding.pry
       checkout = current_user.checkouts.create({
         borrowed_book: book,
         checkout_date: Time.now,
         due_date: Time.now + 2.week
       })
       book.update(currently_checked_out: true)
-      # binding.pry
-      # book.change_checkout_status
     else
       flash[:message] = "You cannot check out this book"
     end
@@ -23,9 +19,9 @@ class CheckoutsController < ApplicationController
 
   def index
     if admin?
-      @checkouts = Checkout.all
+      @checkouts = Checkout.grouped_by_checked_in_status
     else
-      @checkouts = current_user.checkouts.order(created_at: :desc)
+      @checkouts = current_user.checkouts.grouped_by_checked_in_status
     end
   end
 

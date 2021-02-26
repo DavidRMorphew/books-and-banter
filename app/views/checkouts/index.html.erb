@@ -1,9 +1,11 @@
+<div class="container">
+<br>
 <h1>Checkout History</h1>
 <% if @checkouts.empty? %>
             <strong>—No checkouts on file.</strong>
 <% else %>
     <% @checkouts.each do |checkout| %>
-        <div><h3><%= borrowed_book_title(checkout) %></h3>
+        <div><h3><%= link_to borrowed_book_title(checkout), book_path(checkout.borrowed_book.id) %></h3>
             Date Checked Out: <%= format_date(checkout.checkout_date) %><br>
             Status: <%= display_checked_out_status(checkout) %>
             <% if admin? %>
@@ -12,3 +14,4 @@
         </div>
     <% end %>
 <% end %>
+</div>
