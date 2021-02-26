@@ -61,3 +61,11 @@ main {
 [type="password"] {
   color: white;
 }
+
+[type="number"] {
+  color: white;
+}
+
+#review_content {
+  color: white;
+}
