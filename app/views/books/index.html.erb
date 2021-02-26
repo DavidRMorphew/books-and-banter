@@ -4,25 +4,27 @@
     <h5>Click on any title to see more information,<br> check out the book,<br> or write a review.</h5>
 </div>
     <br>
-<div class="container cyan-text text-darken-2">
-    <h5 class= "center">Order and Filter Results:</h5>
+<div class="container cyan-text text-darken-1">
+    <h4 class= "center">Order and Filter Books:</h4>
     <div class="container">
         <%= form_tag books_path, method: :get do %>
-            <h6>Search:</h6><br>
-            <div class="container">
+            
+            
+                <h5 class="center">SEARCH</h5><br>
                 by Author: <%= text_field_tag :search_author_name %><br>
                 by Title: <%= text_field_tag :search_title %><br>
                 by Description: <%= text_field_tag :search_description %><br>
-            </div>
-            <h6>Order:</h6>
-            <div class="container">
+            
+            
+            
+                <h5 class="center">ORDER</h5>
                 <%= radio_button_tag :ordering_filter, :most_recently_added %>
-                    <label for="ordering_filter_most_recently_added" class="cyan-text text-darken-2">by Most Recently Added</label><br>
+                    <label for="ordering_filter_most_recently_added" class="cyan-text text-darken-1">by Most Recently Added</label><br>
                 <%= radio_button_tag :ordering_filter, :most_recently_published %>
-                    <label for="ordering_filter_most_recently_published" class="cyan-text text-darken-2">by Most Recently Published</label><br>  
+                    <label for="ordering_filter_most_recently_published" class="cyan-text text-darken-1">by Most Recently Published</label><br>  
                 <%= radio_button_tag :ordering_filter, :ordered_by_aggregate_ratings %>
-                    <label for="ordering_filter_ordered_by_aggregate_ratings" class="cyan-text text-darken-2">by Highest Rated</label><br>
-            </div>
+                    <label for="ordering_filter_ordered_by_aggregate_ratings" class="cyan-text text-darken-1">by Highest Rated</label><br>
+    
             <br>
             <%= submit_tag "Filter", class:"btn cyan darken-3" %>
         <% end %>
