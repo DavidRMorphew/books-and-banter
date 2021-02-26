@@ -6,6 +6,7 @@ class Book < ApplicationRecord
     validates :authors, :title, :description, :publisher, :publication_date, :categories, :isbn, presence: true
     validates :title, uniqueness: { scope: :authors, message: "with the same author is already in our libray" }
     validate :publication_date_year_valid, if: :publication_date
+    validate :isbn_numbers_and_comma_only, if: :isbn
 
     def self.format_query(queries)
         submitted_queries = queries.reject { |k,v| v.empty? }
@@ -40,6 +41,12 @@ class Book < ApplicationRecord
             self.errors.add(:publication_date, "must be formatted as a four-digit number")
         elsif self.publication_date.to_i > Time.now.year
             self.errors.add(:publication_date, "cannot be in the future")
+        end
+    end
+
+    def isbn_numbers_and_comma_only
+        if !self.isbn.split(", ").all? {|isbn| isbn.match(/(\A\d{9}[X]\z|\A\d{10}\z|\A\d{13}\z)/) }
+            self.errors.add(:isbn, "must comply with isbn conventions")
         end
     end
 
