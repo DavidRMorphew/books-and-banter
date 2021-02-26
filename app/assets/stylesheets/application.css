@@ -16,7 +16,8 @@
 .field_with_errors { 
     padding: 2px;
     display: table;
-    background-color: red;
+    border-style: solid;
+    border-color: red;
 }
 #error_explanation { color: red; }
 
@@ -37,12 +38,6 @@ main {
     position: relative; 
     opacity: 1; 
 }
-
-/* [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
-  position: static;
-  left: 0px; 
-  opacity: 1; 
-} */
 
 [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
   position: absolute;
