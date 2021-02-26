@@ -1,15 +1,18 @@
-<h1><%= reviews_page_title %></h1>
-<h2><%= display_aggregate_book_rating(@book) %></h2>
+<div class="container">
+    <br><br>
+<%= reviews_page_title %>
+<h4 class="center yellow-text text-darken-3"><%= display_aggregate_book_rating(@book) %></h4>
 <% @reviews.each do |review| %>
-    <div>
-        <h3><%= reviewer_username(review) %>'s Review</h3>
-        <strong><%= link_to review.title, review_path(review.id) %></strong><br>
+    <div class="container">
+        <h4><%= reviewer_username(review) %>'s Review</h4>
+        <h4><%= link_to review.title, review_path(review.id) %></h4>
         <%= render partial: 'review_display', locals: { review: review }%>
     </div><br>
 <% end %>
 
 <% if !user_reviewed_book_already?(@book) && !admin? %>
-<%= link_to "Review this Book", new_book_review_path(@book.id)  %><br>
+<h5><%= link_to "Review this Book", new_book_review_path(@book.id) %></h5>
 <% end %>
 <%# back_to_book_if_book method? %>
-<%= link_to "Back to Book", book_path(@book.id) if @book %>
+<h4 class="center"><%= link_to "Back to '#{@book.title}'", book_path(@book.id) if @book %></h4><br>
+</div>

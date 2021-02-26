@@ -13,9 +13,9 @@ module ReviewsHelper
 
     def reviews_page_title
         if params[:book_id]
-            tag.h1("All Reviews of '#{@book.title}'")
+            tag.h2("All Reviews of '#{@book.title}'", class: "center")
         else
-            tag.h1("All Reviews")
+            tag.h2("All Reviews", class: "center")
         end
     end
 
