@@ -15,7 +15,7 @@
     <h4 class="center">Checked-Out Books</h4>
         <div class="container">
             <% if @books.empty? %>
-                <strong>—No books currently checked out.</strong>
+                <div class="center"><strong>—No books currently checked out.</strong></div>
             <% else %>
                 <% @books.each do |book| %>
                     <div><h5><%= link_to book.title, book_path(book.id) %></h5>
@@ -29,7 +29,7 @@
     <h4 class="center">My Book Reviews</h4>
         <div class="container">
             <% if @reviews.empty? %>
-                <strong>—No reviews currently.</strong>
+                <div class="center"><strong class="center">—No reviews currently.</strong></div>
             <% else %>
                 <% @reviews.each do |review| %>
                     <div>
