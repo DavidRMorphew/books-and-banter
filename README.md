@@ -14,3 +14,4 @@
 - more book options for admin add new book
 
 ## License
+[MIT](https://github.com/DavidRMorphew/books-and-banter/blob/main/LICENSE.txt)
