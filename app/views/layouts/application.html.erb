@@ -41,8 +41,9 @@
 
   <main>
     <div class="container grey-text text-lighten-2" id="text_container">
+  
       <% if flash[:message] %>
-        <div id="error_explanation"><h2><%= flash[:message] %></h2></div>
+        <div id="error_explanation"><h4 class="center"><%= flash[:message] %></h4></div>
       <% end %>
 
       <%= yield %>
