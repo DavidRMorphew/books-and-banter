@@ -8,7 +8,7 @@ class Review < ApplicationRecord
     def appropriate_language
         inappropriate_language = [
             "fudge nuggets",
-            "gee willickers",
+            "gee willikers",
             "dagnabbit",
             "fiddlesticks",
             "shucks",
