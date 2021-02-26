@@ -2,21 +2,20 @@
 
 <ul>
 <%= form_for book do |f| %>
-    <li><%= f.label :title %>:<br>
+    <li><%= f.label :title %>
         <%= f.text_field :title %></li>
-    <li>Author(s)<br>
+    <li><%= f.label :authors %>
         <%= f.text_field :authors %>
         </li>
-    <li><%= f.label :description %><br>
+    <li><%= f.label :description %>
         <%= f.text_area :description %></li>
-    <li><%= f.label :publisher %><br>
+    <li><%= f.label :publisher %>
         <%= f.text_field :publisher %></li>
-    <li><%= f.label :publication_date %><br>
+    <li><%= f.label :publication_date %>
         <%= f.text_field :publication_date %></li>
-    <li><%= f.label :categories %><br>
+    <li><%= f.label :categories %>
         <%= f.text_field :categories %></li>
-    </li>
-    <li>ISBN (number only)<br>
+    <li><%= f.label :isbn %><span> (number only)</span>
         <%= f.text_field :isbn %></li>
         <br>
     <li><%= f.submit class:"btn indigo darken-4"%></li>

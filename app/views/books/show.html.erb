@@ -16,8 +16,8 @@
         <h5><%= @book.categories %></h5><br>
 
     <% if admin? %>
-        <%= link_to "Edit this Book", edit_book_path(@book.id) %><br>
-        <%= link_to "Remove this Book from the Library", book_path(@book.id), method: "delete" %><br>
+        <h5><%= link_to "Edit this Book", edit_book_path(@book.id) %></h5>
+        <h5><%= link_to "Remove this Book from the Library", book_path(@book.id), method: "delete" %></h5>
     <% else  %>
     <%# logic  for checked out and available for checkout %>
         <%= checkout_button_or_checked_out_status_display(@book) %>
