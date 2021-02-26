@@ -1,7 +1,9 @@
-<h1>Sign Up to Join Our Library!</h1>
+<h2 class="center">Sign Up to Join Our Library!</h2>
+<h4 class="center">If you already have an account, please <%= link_to "log in", login_path %>.</h4>
 
 <%= render partial: 'shared/error_display', locals: { object: @user }%>
 
+<div class="container">
 <%= form_for(@user, url: "/signup") do |f| %>
     <%= f.label :username %><br>
     <%= f.text_field :username %><br><br>
@@ -11,3 +13,4 @@
     <%= f.password_field :password%><br><br>
     <%= f.submit %>
 <% end %>
+</div>

@@ -50,3 +50,14 @@ main {
   pointer-events: auto;
 }
 
+[type="text"] {
+  color: white;
+}
+
+[type="email"] {
+  color: white;
+}
+
+[type="password"] {
+  color: white;
+}
