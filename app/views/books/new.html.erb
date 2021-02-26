@@ -1,4 +1,6 @@
-<h1>Add a New Book to the Library</h1>
+<div class="container">
+<br>
+<h1 class="center">Add a New Book to the Library</h1>
 <%# books helper method to display search results or manual add, but not both %>
 <% if @google_books_instance %>
     <h3>Search Results.<br> Would like to add this book to the library?</h3>
@@ -22,10 +24,12 @@
         <li>Title <br><%= text_field_tag '[search]title' %></li>
         <li>Category <br><%= text_field_tag '[search]category' %></li>
         <li>ISBN (number only) <br><%= text_field_tag '[search]isbn' %></li>
-        <%= submit_tag "Search", class:"btn indigo darken-4" %>
+            <br>
+        <li><%= submit_tag "Search", class:"btn indigo darken-4" %></li>
     <% end %>
     </ul>
+    <br>
     <h4>Or Manually Add a New Book</h4>
     <%= render partial: 'form', locals: { book: @book } %>
 <% end %>
-
+</div>

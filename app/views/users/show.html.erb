@@ -5,9 +5,11 @@
 
 <% if admin? %>
     <div class="container">
-        <%= link_to "All Reviews", "/admin/reviews" %><br>
-        <%= link_to "Checkouts History for all Users", checkouts_path %><br>
-        <%= link_to "Add a Book to the Library", new_book_path %><br>
+        <br>
+        <h5><%= link_to "All Reviews", "/admin/reviews" %></h5>
+        <h5><%= link_to "Checkouts History for all Users", checkouts_path %></h5>
+        <h5><%= link_to "Add a Book to the Library", new_book_path %></h5>
+        <br>
     </div>
 <% else %>
 
