@@ -35,11 +35,10 @@ module BooksHelper
     end
 
     def checkout_button_or_checked_out_status_display(book)
-        # binding.pry
         if !book.currently_checked_out
-            button_to "Check this book out of the library", book_checkouts_path(book.id)
+            button_to "Check this book out of the library", book_checkouts_path(book.id), class: "btn indigo darken-4"
         elsif current_borrower(book) == current_user
-            button_to "Return Book (#{book_due_date(book)})", book_checkout_path(book.id, current_checkout_record(book).id), method: :patch
+            button_to "Return Book (#{book_due_date(book)})", book_checkout_path(book.id, current_checkout_record(book).id), method: :patch, class: "btn indigo darken-4"
         else
             tag.h4("This book is currently checked out.")
         end
