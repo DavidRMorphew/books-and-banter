@@ -17,9 +17,9 @@
     padding: 2px;
     display: table;
     border-style: solid;
-    border-color: red;
+    border-color: #DC143C;
 }
-#error_explanation { color: red; }
+#error_explanation { color: #DC143C; }
 
 body {
     display: flex;

@@ -12,7 +12,7 @@ module CheckoutsHelper
         if checkout.checked_in
             "BOOK RETURNED"
         else
-            tag.span("BOOK DUE #{format_date(checkout.due_date)}", class: "red-text")
+            tag.span("BOOK DUE #{format_date(checkout.due_date)}", class: "red-text text-darken-3")
         end
     end
 end
