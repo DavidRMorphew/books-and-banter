@@ -26,6 +26,13 @@ body {
     flex-direction: column;
   }
 
-  main {
+main {
     flex: 1 0 auto;
   }
+
+  [type="radio"]:not(:checked), [type="radio"]:checked {
+    position: relative; 
+    opacity: 1; 
+}
+
+
