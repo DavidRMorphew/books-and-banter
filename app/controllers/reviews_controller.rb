@@ -1,10 +1,10 @@
 class ReviewsController < ApplicationController
   include ReviewsHelper
   before_action :redirect_if_not_logged_in
-  before_action :find_and_set_review, only: [:show, :edit, :update, :destroy]  
+  before_action :find_and_set_review, only: [:show, :edit, :update, :destroy]
+  before_action :find_and_set_book, only: [:new, :create, :index]
   
   def new
-    @book = Book.find_by(id: params[:book_id])
     if user_reviewed_book_already?(@book)
       flash[:message] = "You have already reviewed this book."
       redirect_to book_path(@book.id)
@@ -17,13 +17,12 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to review_path(@review.id)
     else
-      @book = Book.find_by(id: params[:book_id])
       render :new
     end
   end
 
   def index
-    if params[:book_id] && @book = Book.find_by(id: params[:book_id])
+    if params[:book_id] && @book
       @reviews = @book.reviews
     elsif admin?
       @reviews = Review.all
@@ -72,5 +71,9 @@ class ReviewsController < ApplicationController
 
   def find_and_set_review
     @review = Review.find_by(id: params[:id])
+  end
+
+  def find_and_set_book
+    @book = Book.find_by(id: params[:book_id])
   end
 end
