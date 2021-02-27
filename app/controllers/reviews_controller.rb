@@ -1,18 +1,14 @@
 class ReviewsController < ApplicationController
   include ReviewsHelper
-
   before_action :redirect_if_not_logged_in
-  
-  # add set_review before action
+  before_action :find_and_set_review, only: [:show, :edit, :update, :destroy]  
   
   def new
-    # binding.pry
     @book = Book.find_by(id: params[:book_id])
     if user_reviewed_book_already?(@book)
       flash[:message] = "You have already reviewed this book."
       redirect_to book_path(@book.id)
     end
-    
     @review = @book.reviews.build
   end
 
@@ -38,13 +34,10 @@ class ReviewsController < ApplicationController
   end
 
   def show
-    @review = Review.find_by(id: params[:id])
     @book = @review.reviewed_book
   end
 
   def edit
-    @review = Review.find_by(id: params[:id])
-
     if !authorized_to_edit_review?(@review)
       flash[:message] = "You are not authorized to edit that review."
       redirect_to user_path(current_user)
@@ -53,8 +46,6 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    @review = Review.find_by(id: params[:id])
-
     if @review.update(review_params)
       redirect_to review_path(@review.id)
     else
@@ -64,7 +55,6 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    @review = Review.find_by(id: params[:id])
     if authorized_to_destroy_review?(@review)
       @review.destroy
       redirect_to books_path
@@ -78,5 +68,9 @@ class ReviewsController < ApplicationController
     
   def review_params
       params.require(:review).permit(:title, :content, :rating, :recommend, :kid_friendly, :reviewed_book_id)
+  end
+
+  def find_and_set_review
+    @review = Review.find_by(id: params[:id])
   end
 end

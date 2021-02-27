@@ -1,13 +1,11 @@
 class SessionsController < ApplicationController
   def new
-    # perhaps redirect_if_logged_in before_action
     if logged_in?
       redirect_to user_path(current_user)
     end
   end
 
   def omniauth
-    # binding.pry
     user = User.create_from_omniauth(auth)
 
     if user.valid?
@@ -26,7 +24,7 @@ class SessionsController < ApplicationController
       redirect_to user_path(user.id)
     else
       flash[:message] = "Email and/or password invalid. Please try again."
-      render :new
+      redirect_to login_path
     end
   end
 
