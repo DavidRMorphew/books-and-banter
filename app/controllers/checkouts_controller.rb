@@ -1,20 +1,20 @@
 class CheckoutsController < ApplicationController
   include BooksHelper
   before_action :redirect_if_not_logged_in
+  before_action :find_and_set_book, only: [:create, :update]
   
   def create
-    book = Book.find_by(id: params[:book_id])
-    if book && !book.currently_checked_out
+    if @book && !@book.currently_checked_out
       checkout = current_user.checkouts.create({
-        borrowed_book: book,
+        borrowed_book: @book,
         checkout_date: Time.now,
         due_date: Time.now + 2.week
       })
-      book.update(currently_checked_out: true)
+      @book.update(currently_checked_out: true)
     else
       flash[:message] = "You cannot check out this book"
     end
-    redirect_to book_path(book)
+    redirect_to book_path(@book)
   end
 
   def index
@@ -26,14 +26,19 @@ class CheckoutsController < ApplicationController
   end
 
   def update
-    book = Book.find_by(id: params[:book_id])
     checkout = Checkout.find_by(id: params[:id])
-    if current_borrower(book) == current_user
+    if current_borrower(@book) == current_user
       checkout.update(checked_in: true)
-      book.update(currently_checked_out: false)
-      redirect_to book_path(book)
+      @book.update(currently_checked_out: false)
+      redirect_to book_path(@book)
     else
       flash[:message] = "You cannot check in that book"
     end
+  end
+
+  private
+
+  def find_and_set_book
+    @book = Book.find_by(id: params[:book_id])
   end
 end
