@@ -18,12 +18,9 @@ class UsersController < ApplicationController
   end
   
   def show
-    # use current_user instead of User.find_by
     redirect_if_not_logged_in
     @user = current_user
-    # @books = @user.borrowed_books.select {|book| current_borrower(book) == current_user }
     @books = current_user.borrowed_books.currently_checked_out_books.select {|book| current_borrower(book) == current_user }
-    # alternative: current_user.borrowed_books.checkout.where(checked_in: false)
     @reviews = current_user.reviews
     redirect_if_not_authorized_to_view(current_user)
   end
