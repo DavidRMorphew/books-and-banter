@@ -50,7 +50,7 @@ You can read more about how to use `dotenv` [here](https://github.com/bkeepers/d
 
 ## Run
 
-To fill your library with books and create the admin user profile adn a couple of others, run the following command in your terminal:
+To fill your library with books, create the admin user profile (and a couple of other user profiles), run the following command in your terminal:
 
 ```
 rails db:seed
@@ -66,7 +66,14 @@ This will bring up a localhost url that you can copy and paste into your browser
 
 ## Admin Account and Functions
 
+The Library Admin profile is located in the `seeds.rb` file with: 
+* `username`: "LibraryAdmin" 
+* `email`: "bookmaster@library.com" 
+* `password`: "admin"
 
+You can use that information to access the admin account after seeding the app. 
+
+Or, you can populate the `seeds.rb` file with your own admin account (just be sure to set the `admin` attribute to "true"), or create a new admin using the rails console.
 
 ## Contributing
 
