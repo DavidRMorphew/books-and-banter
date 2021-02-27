@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  # add before_action for delete for admin_authorization?
-  # add redirect_if_not_logged_in to show and check current_user
   include BooksHelper
 
   def new
