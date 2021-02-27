@@ -13,7 +13,6 @@ class Api < ApplicationRecord
         books_array.map do |book_hash|
 
             book_assignment_hash = {}
-            # better way to do this?
             volume_info = book_hash["volumeInfo"]
             
             book_assignment_hash[:authors] = volume_info["authors"].join(", ") if volume_info["authors"]
@@ -35,7 +34,7 @@ class Api < ApplicationRecord
             if Book.new(book_assignment_hash).valid?
                 Book.new(book_assignment_hash)
             end
-        end.compact # validation check gives nil value when not valid
+        end.compact
     end
 
 end
