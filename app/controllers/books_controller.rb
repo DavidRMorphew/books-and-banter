@@ -6,6 +6,7 @@ class BooksController < ApplicationController
   include BooksHelper
 
   def new
+    flash[:message] = nil
     if params[:search]
       query_for_api = Book.format_query(params[:search])
       if fetched_books = Api.fetch_books(query_for_api)
