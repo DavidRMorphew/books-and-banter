@@ -15,9 +15,11 @@ Once your catalogue is stocked, your users can sign up with google or manually t
 
 For ease of the admin's mind, there is an `appropriate language` custom validation for reviews, which you can use to disallow certain words or phrases. The disallowed word list currently includes phrases such as "gee willikers."
 
-![golly gee willickers, batman image](https://memegenerator.net/img/instances/75311436.jpg)
+<p align="center">
+  <img src="https://memegenerator.net/img/instances/75311436.jpg" alt="golly gee willickers, batman">
+</p>
 
-Visit [here]() for a short video on how this app works.
+Go [here]() for a short video on how this app works.
 
 ## Installation
 To install the program, open your Terminal and run the following command:
@@ -37,20 +39,34 @@ Before starting, be sure to run
 bundle install
 ```
 
-You will also want to create a `.env` file to store your (): 
-* `GOOGLE_BOOKS_API_KEY` 
-* `GOOGLE_CLIENT_ID` 
-* `GOOGLE_CLIENT_SECRET` 
+You will also want to create a `.env` file to store your `GOOGLE_BOOKS_API_KEY`.
 
 This program uses the Google Books API to harvest book data on a given subject (currently set to "fiction") and the library admin's `ADD A NEW BOOK` feature uses the API to search for books on Google Books. Currently, you can run the api without a google books api key, but that accessibility is not assured for the future. If you want to try your luck without a key, delete `&key=#{ENV["GOOGLE_BOOKS_API_KEY"]}` at the end of the `url` in l. 4 of app/models/api.rb:
 ```
 4    url = "https://www.googleapis.com/books/v1/volumes?q=#{query}&langRestrict=en&printType=books&maxResults=40&key=#{ENV["GOOGLE_BOOKS_API_KEY"]}"
-
 ```
 
-This app is also set up to use omniauth authenticaion through Google, but you will need access to a google client id and google client secret to use it.
+You can read more about how to use `dotenv` [here](https://github.com/bkeepers/dotenv). (Do not use quotation marks when assigning the values for each of these!)
 
-You can read more about how to use `dotenv` [here](https://github.com/bkeepers/dotenv).(Do not use quotation marks when assigning the values for each of these!)
+## Run
+
+To fill your library with books and create the admin user profile adn a couple of others, run the following command in your terminal:
+
+```
+rails db:seed
+```
+
+You can run the program locally on your computer by entering the following in your terminal:
+
+```
+rails s
+```
+
+This will bring up a localhost url that you can copy and paste into your browser to begin using the program, such as `localhost:3000`.
+
+## Admin Account and Functions
+
+
 
 ## Contributing
 
