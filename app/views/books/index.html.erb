@@ -8,24 +8,18 @@
     <h4 class= "center">Order and Filter Books:</h4>
     <div class="container">
         <%= form_tag books_path, method: :get do %>
-            
-            
-                <h5 class="center">SEARCH</h5><br>
+            <h5 class="center">SEARCH</h5><br>
                 by Author: <%= text_field_tag :search_author_name %><br>
                 by Title: <%= text_field_tag :search_title %><br>
                 by Description: <%= text_field_tag :search_description %><br>
-            
-            
-            
-                <h5 class="center">ORDER</h5>
+            <h5 class="center">ORDER</h5>
                 <%= radio_button_tag :ordering_filter, :most_recently_added %>
                     <label for="ordering_filter_most_recently_added" class="cyan-text text-darken-1">by Most Recently Added</label><br>
                 <%= radio_button_tag :ordering_filter, :most_recently_published %>
                     <label for="ordering_filter_most_recently_published" class="cyan-text text-darken-1">by Most Recently Published</label><br>  
                 <%= radio_button_tag :ordering_filter, :ordered_by_aggregate_ratings %>
                     <label for="ordering_filter_ordered_by_aggregate_ratings" class="cyan-text text-darken-1">by Highest Rated</label><br>
-    
-            <br>
+                <br>
             <%= submit_tag "Filter", class:"btn cyan darken-3" %>
         <% end %>
     </div>
@@ -39,7 +33,6 @@
 <% @books.each do |book| %>
     <div class="container">
         <h5><%= link_to book.title, book_path(book.id) %></h5>
-    
         <%= render partial: 'author_description_display', locals: { book: book } %>
     </div>
 <% end %>  
