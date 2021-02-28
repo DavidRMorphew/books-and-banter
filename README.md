@@ -46,7 +46,7 @@ This program uses the Google Books API to harvest book data on a given subject (
 4    url = "https://www.googleapis.com/books/v1/volumes?q=#{query}&langRestrict=en&printType=books&maxResults=40&key=#{ENV["GOOGLE_BOOKS_API_KEY"]}"
 ```
 
-You can read more about how to use `dotenv` [here](https://github.com/bkeepers/dotenv) (Do not use quotation marks when assigning the values for each of these!) and more on how this program interfaces with the Google Books API on my [blog](https://davidrmorphew.medium.com/google-books-api-search-filters-in-rails-how-i-learned-to-love-regex-and-send-4795c93f02ac).
+You can read more about how to use `dotenv` [here](https://github.com/bkeepers/dotenv) (Do not use quotation marks when assigning the value for the key!) and more on how this program interfaces with the Google Books API on my [blog](https://davidrmorphew.medium.com/google-books-api-search-filters-in-rails-how-i-learned-to-love-regex-and-send-4795c93f02ac).
 
 ## Run
 
