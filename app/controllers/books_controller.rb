@@ -1,8 +1,9 @@
 class BooksController < ApplicationController
+  include BooksHelper
   before_action :redirect_if_not_logged_in
   before_action :redirect_if_not_admin, only: [:new, :create, :edit, :update, :destroy]
   before_action :find_and_set_book, only: [:show, :edit, :update, :destroy]
-  include BooksHelper
+
 
   def new
     flash[:message] = nil
