@@ -19,7 +19,7 @@ For ease of the admin's mind, there is an `appropriate language` custom validati
   <img src="https://memegenerator.net/img/instances/75311436.jpg" alt="golly gee willickers, batman">
 </p>
 
-Go [here]() for a short video on how this app works.
+Go [here](https://youtu.be/wIQyvTqZ4z4) for a short video on how this app works.
 
 ## Installation
 To install the program, open your terminal and run the following command:
