@@ -13,6 +13,6 @@
 <% if !user_reviewed_book_already?(@book) && !admin? %>
 <h5><%= link_to "Review this Book", new_book_review_path(@book.id) %></h5>
 <% end %>
-<%# back_to_book_if_book method? %>
+
 <h4 class="center"><%= link_to "Back to '#{@book.title}'", book_path(@book.id) if @book %></h4><br>
 </div>

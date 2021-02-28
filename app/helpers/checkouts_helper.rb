@@ -7,7 +7,6 @@ module CheckoutsHelper
         checkout.borrower.username
     end
 
-    # make book due red font in checkout index
     def display_checked_out_status(checkout)
         if checkout.checked_in
             "BOOK RETURNED"

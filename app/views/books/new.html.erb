@@ -1,7 +1,7 @@
 <div class="container">
 <br>
 <h1 class="center">Add a New Book to the Library</h1>
-<%# books helper method to display search results or manual add, but not both %>
+
 <% if @google_books_instance %>
     <h3>Search Results.<br> Would like to add this book to the library?</h3>
     <%= form_for @google_books_instance do |f| %>

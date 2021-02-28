@@ -23,7 +23,7 @@
                 <% @books.each do |book| %>
                     <div><h5><%= link_to book.title, book_path(book.id) %></h5>
                         <%= render partial: 'books/author_description_display', locals: { book: book } %>
-                        <strong><%= book_due_date(book) %></strong>
+                        <strong class="red-text text-darken-3"><%= book_due_date(book) %></strong>
                     </div>
                 <% end %>
             <% end %>
