@@ -4,6 +4,6 @@ class Checkout < ApplicationRecord
     validates :borrowed_book, :borrower, presence: true
 
     def self.grouped_by_checked_in_status
-        self.all.order(:checked_in)
+        self.order(:checked_in)
     end
 end
