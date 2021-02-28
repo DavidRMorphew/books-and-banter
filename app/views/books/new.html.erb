@@ -1,35 +1,35 @@
 <div class="container">
-<br>
+    <br>
 <h1 class="center">Add a New Book to the Library</h1>
 
 <% if @google_books_instance %>
     <h3>Search Results.<br> Would like to add this book to the library?</h3>
-    <%= form_for @google_books_instance do |f| %>
-        <strong><%= @google_books_instance.title %></strong><br>
-        
-        <%= render partial: 'author_description_display', locals: { book: @google_books_instance } %>
+        <%= form_for @google_books_instance do |f| %>
+            <strong><%= @google_books_instance.title %></strong><br>
+            
+            <%= render partial: 'author_description_display', locals: { book: @google_books_instance } %>
 
-        <input type="hidden" name="google_books_instance_isbn" value="<%=@google_books_instance.isbn%>"/>
-        <%= f.submit "Add Book to Library", class:"btn indigo darken-4" %>
-        
-    <% end %>
+            <input type="hidden" name="google_books_instance_isbn" value="<%=@google_books_instance.isbn%>"/>
+            <%= f.submit "Add Book to Library", class:"btn indigo darken-4" %>
+            
+        <% end %>
     <%= button_to "Start Over?", new_book_path, method: :get, class:"btn indigo darken-4" %>
 
 <% else %>
 
     <h4>Search for a New Book from Google Books</h4>
-    <ul>
-    <%= form_tag new_book_path, method: :get do %>
-        <li>Author <br><%= text_field_tag '[search]author' %></li>
-        <li>Title <br><%= text_field_tag '[search]title' %></li>
-        <li>Category <br><%= text_field_tag '[search]category' %></li>
-        <li>ISBN (number only) <br><%= text_field_tag '[search]isbn' %></li>
-            <br>
-        <li><%= submit_tag "Search", class:"btn indigo darken-4" %></li>
-    <% end %>
-    </ul>
+        <ul>
+        <%= form_tag new_book_path, method: :get do %>
+            <li>Author <br><%= text_field_tag '[search]author' %></li>
+            <li>Title <br><%= text_field_tag '[search]title' %></li>
+            <li>Category <br><%= text_field_tag '[search]category' %></li>
+            <li>ISBN (number only) <br><%= text_field_tag '[search]isbn' %></li>
+                <br>
+            <li><%= submit_tag "Search", class:"btn indigo darken-4" %></li>
+        <% end %>
+        </ul>
     <br>
     <h4>Or Manually Add a New Book</h4>
-    <%= render partial: 'form', locals: { book: @book } %>
+        <%= render partial: 'form', locals: { book: @book } %>
 <% end %>
 </div>
