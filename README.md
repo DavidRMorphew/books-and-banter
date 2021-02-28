@@ -88,7 +88,7 @@ This project is built for welcomed collaboration, and contributors are expected 
 The following are just a few areas open to future development:
 - BUILD: search features for sorting, and filtering the library's checkouts records
 - BUILD: more search features for viewing, sorting, and filtering the library's list of books
-- BUILD: more many-to-many relations to persist authors, categories, and other shared book attributes as unique entries
+- BUILD: more many-to-many relations to persist authors, categories, and other shared book attributes as unique entries (see the current associations in the  `library_table.drawio` file, but you'll need a [draw.io extension](https://marketplace.visualstudio.com/items?itemName=hediet.vscode-drawio) or similar to view it when using VSCode)
 - MODIFY: book search and create option for the admin to choose from several Google Books returned options
 
 
