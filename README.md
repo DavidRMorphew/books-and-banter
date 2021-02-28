@@ -4,14 +4,14 @@
 
 ## Purpose and Usage
 
-This app is intended to help create and persist an online catalogue of books for a library. It also builds out an online user interface for a library with checkout functionality, persisted checkout records, and shared thoughts on books through user submitted reviews.
+This app is intended to help create and persist an online catalogue of books for a library. It also builds out an online user interface for a library with checkout functionality, persisted checkout records, and shared thoughts on books through user-submitted reviews.
 
 As the admin, you first create a catalogue of book instances from Google Books with all of the usual data you would want on a book (such as title, authors, isbn, etc.). You can also use the google search feature to add more books to your library catalogue at any time, or you can add your own entries.
 
-Once your catalogue is stocked, your users can sign up with google or manually to
-* view, sort, and search the library (e.g. by author, title, description);
-* create checkout records for books;
-* and write and edit book reviews.
+Once your catalogue is stocked, your users can sign up with google (or by entering username, email, and password) to:
+* view, sort, and search the library (e.g. by author, title, description)
+* create checkout records for books
+* write and edit book reviews
 
 For ease of the admin's mind, there is an `appropriate language` custom validation for reviews, which you can use to disallow certain words or phrases. The disallowed word list currently includes phrases such as "gee willikers."
 
@@ -22,7 +22,7 @@ For ease of the admin's mind, there is an `appropriate language` custom validati
 Go [here]() for a short video on how this app works.
 
 ## Installation
-To install the program, open your Terminal and run the following command:
+To install the program, open your terminal and run the following command:
 
 ```
 git clone git@github.com:DavidRMorphew/books-and-banter.git
@@ -86,7 +86,7 @@ This project is built for welcomed collaboration, and contributors are expected 
 ## Future Functionality
 
 The following are just a few areas open to future development:
-- BUILD: search features for sorting, and filtering the library's checkouts records
+- BUILD: search features for sorting and filtering the library's checkouts records
 - BUILD: more search features for viewing, sorting, and filtering the library's list of books
 - BUILD: more many-to-many relations to persist authors, categories, and other shared book attributes as unique entries (see the current associations in the  `library_table.drawio` file, but you'll need a [draw.io extension](https://marketplace.visualstudio.com/items?itemName=hediet.vscode-drawio) or similar to view it when using VSCode)
 - MODIFY: book search and create option for the admin to choose from several Google Books returned options
