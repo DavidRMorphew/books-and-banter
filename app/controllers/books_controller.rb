@@ -1,5 +1,4 @@
 class BooksController < ApplicationController
-  # Add before_action to find book in show, edit, update, delete called set_book
   before_action :redirect_if_not_logged_in
   before_action :redirect_if_not_admin, only: [:new, :create, :edit, :update, :destroy]
   before_action :find_and_set_book, only: [:show, :edit, :update, :destroy]
