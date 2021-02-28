@@ -73,14 +73,14 @@ class Book < ApplicationRecord
     end
 
     def self.search_author_name(author_query)
-        Book.where("authors LIKE ?", "%#{author_query}%")
+        self.where("authors LIKE ?", "%#{author_query}%")
     end
 
     def self.search_title(title_query)
-        Book.where("title LIKE ?", "%#{title_query}%")
+        self.where("title LIKE ?", "%#{title_query}%")
     end
 
     def self.search_description(description_query)
-        Book.where("description LIKE ?", "%#{description_query}%")
+        self.where("description LIKE ?", "%#{description_query}%")
     end
 end
