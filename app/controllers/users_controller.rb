@@ -20,7 +20,8 @@ class UsersController < ApplicationController
     @user = current_user
     @books = current_user.borrowed_books.currently_checked_out_books.select {|book| current_borrower(book) == current_user }
     @reviews = current_user.reviews
-    redirect_if_not_authorized_to_view(current_user)
+    user_from_url_submitted_id = User.find_by(id: params[:id])
+    redirect_if_not_authorized_to_view(user_from_url_submitted_id)
   end
 
   private
