@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   include BooksHelper
+  before_action :redirect_if_not_logged_in, only: :show
 
   def new
     @user = User.new
@@ -16,7 +17,6 @@ class UsersController < ApplicationController
   end
   
   def show
-    redirect_if_not_logged_in
     @user = current_user
     @books = current_user.borrowed_books.currently_checked_out_books.select {|book| current_borrower(book) == current_user }
     @reviews = current_user.reviews
